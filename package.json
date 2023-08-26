@@ -1,0 +1,35 @@
+{
+  "name": "proyecto-bega-formativo",
+  "description": "## Proyecto de tienda para la comercializacion de productos de aseo, cotizacion de productos al por mayor y al detal para clientes individuales y/o empresas, cuenta con un perfil para que cada cliente se registre y administre sus pedidos, se maneja un diseño agradable y facil de usar, se utliza una arquitectura de codigo limpia para que sea mas entendible para cualquier desarrollador.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .  --ext .js",
+    "lint-fix": "eslint . --ext .js --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "excel4node": "^1.8.2",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.5",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.4",
+    "router": "^1.3.8"
+  },
+  "devDependencies": {
+    "eslint": "^8.48.0",
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^3.0.1"
+  }
+}
