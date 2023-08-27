@@ -1,0 +1,59 @@
+[
+// Clientes
+{
+    "_id": {
+      "$oid": "64039a52743654515e00e461"
+    },
+    "correo": "gomeze@hub.com",
+    "direccion": "Diag. 3 #11-63",
+    "identificacion": 11114,
+    "nombre": "Esperanza Gomez",
+    "telefono": {
+      "$numberLong": "6042510241"
+    },
+    "contrasena": "32456"
+  },
+
+  // Productos
+  {
+    "_id": {
+      "$oid": "640393fd743654515e00e45e"
+    },
+    "stock": 14,
+    "descripcion": "Trapera",
+    "valor": 9000,
+    "codigo": "AB001",
+    "tipo": "Fibra"
+  },
+
+  // Usuarios
+  {
+    "_id": {
+      "$oid": "64eb758da4f23e6ef0320242"
+    },
+    "correo": "cleanhouse@gmail.com",
+    "contrasena": "5130",
+    "rol": "cliente"
+  },
+
+  // Ventas
+  {
+    "_id": {
+      "$oid": "64eb65700010e3ce8662c2cc"
+    },
+    "identificacion": 111441,
+    "fecha": {
+      "$date": {
+        "$numberLong": "1692489600000"
+      }
+    },
+    "factura": {
+      "$numberLong": "1222"
+    },
+    "tipopago": "Credito",
+    "estado": "pendiente",
+    "producto": [
+      ""
+    ]
+  }
+]
