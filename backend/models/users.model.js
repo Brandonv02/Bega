@@ -1,6 +1,6 @@
+const connection = require("../config/connectionbd");
 
-
-const users = new Schema({
+const users = new connection.Schema({
   correo: {
     type: String,
     require: true,
@@ -9,6 +9,13 @@ const users = new Schema({
     type: String,
     require: true,
   },
+  rol: {
+    type: String,
+    default: "cliente",
+    require: true,
+  },
 });
 
-module.exports = users;
+const user = conexionBD.model("usuarios", users);
+
+module.exports = user;
