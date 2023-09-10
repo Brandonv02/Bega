@@ -27,6 +27,6 @@ const ventas = new connection.Schema({
   },
 });
 
-const sales = conexionBD.model("productos", ventas);
+const sales = connection.model("productos", ventas);
 
 module.exports = sales;

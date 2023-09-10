@@ -31,6 +31,6 @@ const clientes = new connection.Schema({
   },
 });
 
-const clients = conexionBD.model("clientes", clientes);
+const clients = connection.model("clientes", clientes);
 
 module.exports = clients;

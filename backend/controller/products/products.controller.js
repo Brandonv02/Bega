@@ -1,7 +1,7 @@
-const {newProductsUc, productos} = require("./products.uc");
+const {newProductsUc, productosUc} = require("./products.uc");
 
-exports.buscarProductos = async (req, res) => {
-  const response = await productos();
+exports.buscarProductoscontroller = async (req, res) => {
+  const response = await productosUc();
   res.json(response);
 };
 
@@ -12,3 +12,6 @@ exports.newProductController = async (req, res) => {
   res.json(response);
 };
 
+exports.borrarProductoController = async (req, res) => {
+
+};

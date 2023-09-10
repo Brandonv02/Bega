@@ -16,6 +16,6 @@ const users = new connection.Schema({
   },
 });
 
-const user = conexionBD.model("usuarios", users);
+const user = connection.model("usuarios", users);
 
 module.exports = user;
