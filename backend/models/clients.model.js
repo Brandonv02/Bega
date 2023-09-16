@@ -1,14 +1,14 @@
 const connection = require("../config/connectionbd");
 
 const clientes = new connection.Schema({
-  Identificacion: {
-    type: Number,
+  identificacion: {
+    type: String,
     require: [true, "El documento es necesario"],
     unique: [true, "El documento ya existe"],
     minLenght: 6,
     maxLenght: 11,
   },
-  nombreCliente: {
+  nombre: {
     type: String,
     require: true,
   },
@@ -16,8 +16,8 @@ const clientes = new connection.Schema({
     type: String,
     require: true,
   },
-  telefono: {
-    type: Number,
+  celular: {
+    type: String,
     require: true,
     maxLenght: 11,
   },
@@ -31,6 +31,6 @@ const clientes = new connection.Schema({
   },
 });
 
-const clients = connection.model("clientes", clientes);
+const Clients = connection.model("clientes", clientes);
 
-module.exports = clients;
+module.exports = Clients;

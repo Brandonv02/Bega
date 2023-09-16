@@ -1,10 +1,22 @@
 const express = require("express");
-const {newProductController, buscarProductoscontroller} = require("../controller/products/products.controller");
+const {nuevoProductController, buscarProductoscontroller} = require("../controller/products/products.controller");
 const {loginController} = require("../controller/login/login.controller");
+const {newClientController} = require("../controller/clients/clients.controller");
 const router = express.Router();
 
+// LOGIN
 router.get("/login", loginController);
-router.post("/prueba1", newProductController);
+
+
+// CLIENTS
+router.post("/newClient", newClientController);
+
+
+// SALES
+
+
+// PRODUCTS
+router.post("/newproduct", nuevoProductController);
 router.get("/productos", buscarProductoscontroller);
 
 router.get("/pru", (req, res) => {

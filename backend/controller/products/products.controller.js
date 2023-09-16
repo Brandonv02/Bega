@@ -5,7 +5,7 @@ exports.buscarProductoscontroller = async (req, res) => {
   res.json(response);
 };
 
-exports.newProductController = async (req, res) => {
+exports.nuevoProductController = async (req, res) => {
   const param = req.body;
   const response = await newProductsUc(param);
   console.log(response);
@@ -13,5 +13,9 @@ exports.newProductController = async (req, res) => {
 };
 
 exports.borrarProductoController = async (req, res) => {
+
+};
+
+exports.actualizarProductoController = async (req, res) => {
 
 };
