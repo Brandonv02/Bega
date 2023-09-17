@@ -1,5 +1,5 @@
 const express = require("express");
-const {nuevoProductController, buscarProductoscontroller} = require("../controller/products/products.controller");
+const {nuevoProduct, buscarProductos} = require("../controller/products/products.controller");
 const {loginController} = require("../controller/login/login.controller");
 const {newClientController} = require("../controller/clients/clients.controller");
 const router = express.Router();
@@ -16,8 +16,8 @@ router.post("/newClient", newClientController);
 
 
 // PRODUCTS
-router.post("/newproduct", nuevoProductController);
-router.get("/productos", buscarProductoscontroller);
+router.post("/newproduct", nuevoProduct);
+router.get("/products", buscarProductos);
 
 router.get("/pru", (req, res) => {
   res.send("hello world");
