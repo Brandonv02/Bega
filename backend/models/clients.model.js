@@ -9,10 +9,12 @@ const clientes = new connection.Schema({
     maxLenght: 11,
   },
   nombre: {
+    require: [true, "El nombre es necesario"],
     type: String,
     require: true,
   },
   correo: {
+    require: [true, "El correo es necesario"],
     type: String,
     require: true,
   },
@@ -26,6 +28,7 @@ const clientes = new connection.Schema({
     require: true,
   },
   contrasena: {
+    require: [true, "La contraseña es necesaria"],
     type: String,
     require: true,
   },
