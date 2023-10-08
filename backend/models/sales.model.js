@@ -2,15 +2,17 @@ const connection = require("../config/connectionbd");
 
 const ventas = new connection.Schema({
   identificacion: {
+    unique: [true, "El documento ya existe"],
+    require: [true, "El documento es necesario"],
     type: String,
-    require: true,
   },
   fecha: {
     type: Date,
     require: true,
   },
   factura: {
-    type: Number,
+    type: String,
+    unique: [true, "Factura existe"],
     require: true,
   },
   tipoPago: {
@@ -27,6 +29,6 @@ const ventas = new connection.Schema({
   },
 });
 
-const sales = connection.model("productos", ventas);
+const Sales = connection.model("ventas", ventas);
 
-module.exports = sales;
+module.exports = Sales;

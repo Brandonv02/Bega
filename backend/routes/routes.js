@@ -2,7 +2,7 @@ const express = require("express");
 const {nuevoProduct, buscarProductos} = require("../controller/products/products.controller");
 const {loginController, newUserController, updateUserController, removeUserController} = require("../controller/login/login.controller");
 const {newClientController} = require("../controller/clients/clients.controller");
-const {getSales} = require("../controller/sales/sales.controller");
+const {getSalesController, insertSalesController, updateSalesController, removeSalesController} = require("../controller/sales/sales.controller");
 const router = express.Router();
 
 // LOGIN
@@ -152,9 +152,63 @@ router.post("/newClient", newClientController);
  *            $ref: '#/components/schemas/Sales'
  *    responses:
  *      200:
- *        decription: nuevo login
+ *        decription: Mostrar ventas
  */
-router.get("/getSales", getSales);
+router.post("/getSales", getSalesController);
+/**
+ * @swagger
+ * /api/insertSales:
+ *  post:
+ *    summary: Sales user
+ *    tags: [Sales]
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            $ref: '#/components/schemas/Sales'
+ *    responses:
+ *      200:
+ *        decription: Insertar ventas
+ */
+router.post("/insertSales", insertSalesController);
+/**
+ * @swagger
+ * /api/updateSales:
+ *  post:
+ *    summary: Sales user
+ *    tags: [Sales]
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            $ref: '#/components/schemas/Sales'
+ *    responses:
+ *      200:
+ *        decription: Actualizar ventas
+ */
+router.post("/updateSales", updateSalesController);
+/**
+ * @swagger
+ * /api/deleteSales:
+ *  post:
+ *    summary: Sales user
+ *    tags: [Sales]
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            $ref: '#/components/schemas/Sales'
+ *    responses:
+ *      200:
+ *        decription: Eliminar ventas
+ */
+router.post("/deleteSales", removeSalesController);
 
 // PRODUCTS
 
