@@ -17,7 +17,7 @@ exports.nuevoProduct = async (req, res) => {
 };
 
 exports.borrarProducto = async (req, res) => {
-
+  
 };
 
 exports.actualizarProducto = async (req, res) => {

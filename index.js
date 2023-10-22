@@ -7,7 +7,7 @@ const swaggerSpec = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Node API",
+      title: "BEGA API",
       version: "1.0.0",
     },
     servers: [

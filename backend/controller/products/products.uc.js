@@ -14,8 +14,8 @@ exports.insert = async (param) => {
   return await nuevoproducto.save();
 };
 
-exports.update = async (param) => {
-
+exports.update = async (_filter, _productInfo) => {
+  return await Productos.findOneAndUpdate(_filter, _clientInfo, {new: true});
 };
 
 exports.delete = async (param) => {

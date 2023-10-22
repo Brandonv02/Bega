@@ -1,4 +1,6 @@
 const express = require("express");
+const fs = require("fs");
+const path = require("path");
 const {nuevoProduct, buscarProductos} = require("../controller/products/products.controller");
 const {loginController, newUserController, updateUserController, removeUserController} = require("../controller/login/login.controller");
 const {newClientController} = require("../controller/clients/clients.controller");
@@ -215,8 +217,13 @@ router.post("/deleteSales", removeSalesController);
 router.post("/newproduct", nuevoProduct);
 router.get("/products", buscarProductos);
 
-router.get("/", (req, res) => {
-  res.send("hello world");
+router.get("/prueba", (req, res) => {
+  const fs = require("fs");
+  const text = "prueba de file system";
+  const rutaPersonalizada = path.join(__dirname, "../files/logs", "fileLogs.txt");
+  fs.writeFile(rutaPersonalizada, text, (err) => {
+    if (err) throw err;
+  });
 });
 
 module.exports = router;
