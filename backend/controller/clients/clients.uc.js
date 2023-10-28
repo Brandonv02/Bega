@@ -5,3 +5,17 @@ exports.newClientUc = async (param) => {
   return await newClient.save();
 };
 
+exports.find = async (_filter, _options = {}) => {
+  console.log(_filter);
+  const {sort} = _options;
+  if (_filter) {
+    const query = await Clients.findOne(_filter);
+    return query;
+  }
+  if (sort) query.sort(sort);
+  // query.forEach(populate || [], (p) => query.populate(p));
+  // return await query.lean().exec();
+  const clientes = await Clients.find();
+  return clientes;
+};
+

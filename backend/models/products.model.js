@@ -2,6 +2,7 @@ const connection = require("../config/connectionbd");
 
 const products = new connection.Schema({
   codigo: {
+    unique: [true, "El codigo ya existe"],
     type: String,
     require: true,
   },
@@ -10,6 +11,7 @@ const products = new connection.Schema({
     require: true,
   },
   descripcion: {
+    require: [true, "la descripcion es necesaria"],
     type: String,
     require: true,
   },

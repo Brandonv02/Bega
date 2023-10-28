@@ -1,0 +1,502 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "BEGA API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3002"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "correo": {
+            "type": "string",
+            "description": "correo del usuario"
+          },
+          "contraseña": {
+            "type": "string",
+            "description": "contraseña del usuario"
+          },
+          "rol": {
+            "type": "string",
+            "description": "rol del usuario"
+          }
+        }
+      },
+      "Sales": {
+        "type": "object",
+        "properties": {
+          "identificacion": {
+            "type": "string",
+            "description": "identificacion usuario"
+          },
+          "fecha": {
+            "type": "string",
+            "description": "fecha venta"
+          },
+          "factura": {
+            "type": "string",
+            "description": "factura venta"
+          },
+          "tipoPago": {
+            "type": "string",
+            "description": "tipo de pago"
+          },
+          "productos": {
+            "type": "string",
+            "description": "productos de la venta"
+          },
+          "estado": {
+            "type": "string",
+            "description": "estado de la venta"
+          }
+        }
+      },
+      "Products": {
+        "type": "object",
+        "properties": {
+          "stock": {
+            "type": "string",
+            "description": "Disponibilidad del producto"
+          },
+          "descripcion": {
+            "type": "string",
+            "description": "descripcion del producto"
+          },
+          "valor": {
+            "type": "number",
+            "description": "valor del producto"
+          },
+          "codigo": {
+            "type": "string",
+            "description": "codigo del producto"
+          },
+          "tipo": {
+            "type": "string",
+            "description": "tipo de producto"
+          }
+        }
+      },
+      "Clients": {
+        "type": "object",
+        "properties": {
+          "identificacion": {
+            "type": "string",
+            "description": "identificacion del cliente"
+          },
+          "nombre": {
+            "type": "string",
+            "description": "nombre del cliente"
+          },
+          "correo": {
+            "type": "string",
+            "description": "correo del cliente"
+          },
+          "celular": {
+            "type": "string",
+            "description": "celular del cliente"
+          },
+          "direccion": {
+            "type": "string",
+            "description": "direccion del cliente"
+          },
+          "contrasena": {
+            "type": "string",
+            "description": "contraseña del cliente"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/api/newClient": {
+      "post": {
+        "summary": "Login user",
+        "tags": [
+          "clients"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Clients"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "New login"
+          }
+        }
+      }
+    },
+    "/api/updateCLient": {
+      "post": {
+        "summary": "Login user",
+        "tags": [
+          "clients"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Clients"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "actualizar cliente"
+          }
+        }
+      }
+    },
+    "/api/deleteClient": {
+      "post": {
+        "summary": "Login user",
+        "tags": [
+          "clients"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Clients"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "delete client"
+          }
+        }
+      }
+    },
+    "/api/getClient": {
+      "post": {
+        "summary": "Login user",
+        "tags": [
+          "clients"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Clients"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "New login"
+          }
+        }
+      }
+    },
+    "/api/login": {
+      "post": {
+        "summary": "Login user",
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "New login"
+          }
+        }
+      }
+    },
+    "/api/newUser": {
+      "post": {
+        "summary": "Create a new user",
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "New user created"
+          }
+        }
+      }
+    },
+    "/api/updateUser": {
+      "post": {
+        "summary": "Update user information",
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User information updated"
+          }
+        }
+      }
+    },
+    "/api/removeUser": {
+      "post": {
+        "summary": "Remove a user",
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User removed"
+          }
+        }
+      }
+    },
+    "/api/getSales": {
+      "post": {
+        "summary": "Get sales",
+        "tags": [
+          "Sales"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Sales"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Show sales"
+          }
+        }
+      }
+    },
+    "/api/insertSales": {
+      "post": {
+        "summary": "Insert sales",
+        "tags": [
+          "Sales"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Sales"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Insert sales"
+          }
+        }
+      }
+    },
+    "/api/updateSales": {
+      "post": {
+        "summary": "Update sales",
+        "tags": [
+          "Sales"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Sales"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update sales"
+          }
+        }
+      }
+    },
+    "/api/deleteSales": {
+      "post": {
+        "summary": "Delete sales",
+        "tags": [
+          "Sales"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Sales"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Delete sales"
+          }
+        }
+      }
+    },
+    "/api/newproduct": {
+      "post": {
+        "summary": "Add a new product",
+        "tags": [
+          "products"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Sales"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "New product added"
+          }
+        }
+      }
+    },
+    "/api/getProducts": {
+      "post": {
+        "summary": "Get products",
+        "tags": [
+          "products"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Sales"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Show products"
+          }
+        }
+      }
+    },
+    "/api/updateProducts": {
+      "post": {
+        "summary": "Update products",
+        "tags": [
+          "products"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Sales"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update products"
+          }
+        }
+      }
+    },
+    "/api/deleteProducts": {
+      "post": {
+        "summary": "Delete products",
+        "tags": [
+          "products"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Sales"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Delete products"
+          }
+        }
+      }
+    }
+  }
+}

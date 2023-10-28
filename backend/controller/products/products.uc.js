@@ -18,13 +18,9 @@ exports.update = async (_filter, _productInfo) => {
   return await Productos.findOneAndUpdate(_filter, _clientInfo, {new: true});
 };
 
-exports.delete = async (param) => {
+exports.remove = async (param) => {
   const id = param._id;
   const response = await Productos.findOneAndDelete(id);
   return response;
 };
 
-// Model.insertMany()
-// Model.findOneAndReplace()
-// Model.updateMany()
-// Model.deleteOne()

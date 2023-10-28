@@ -5,6 +5,9 @@ exports.loginController = async (req, res) => {
   const response = await getUserController(id);
   console.log(response);
   res.json(response);
+  if (response !== null) {
+    res.json("ya existe");
+  }
 };
 
 const getUserController = async (param) => {
