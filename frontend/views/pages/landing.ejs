@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.1/font/bootstrap-icons.css">
+
+    <!-- ESTILOS PROPIOS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <title>index</title>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top" style="background-color: #0093ff; height: 107px;"> 
+        <img src="images/BEGA.png" class="logo" alt="">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto" style="margin-left: 20px;">
+            <li class="nav-item ">
+              <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cotizaciones.html">Cotizaciones</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                Productos
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="productos.html">Listar Productos</a>
+                <a class="dropdown-item" href="RegistrarProducto.html">Registrar producto</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0" style="width: 525px;">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="display: flex;   width: 40px;">
+                <i class="bi bi-search"></i>
+            </button>
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#login" style="margin-left: 9px; display: flex; justify-content: space-between; width: 80px;">
+                Login<i class="bi bi-box-arrow-in-right"></i>
+            </button>
+            <button type="button" class="btn btn-light " data-toggle="modal" data-target="#registro" style="margin-left: 9px; display: flex; justify-content: space-between;width: 100px;">
+                Registro<i class="bi bi-box-arrow-in-right"></i>
+            </button>
+            <!-- <button type="button" class="btn btn-light "style="margin-left: 9px; display: flex; justify-content: space-between;width: 40px;">
+                <a href="carritodecompras.html"><i class="bi bi-cart3"></i></a>
+            </button> -->
+          </form>
+        </div>
+      </nav>
+    
+      <!-- CUERPO DE PAGINA -->
+
+      <div id="carouselExampleInterval" class="carousel slide shadow" data-ride="carousel">
+        <div class="carousel-inner" style="height: 600px; margin-top: 107px;">
+          <div class="carousel-item active" data-interval="4000">
+            <img src="images/c1.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" data-interval="4000">
+            <img src="images/c2.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" data-interval="4000">
+            <img src="images/c3.jpg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleInterval" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleInterval" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </button>
+      </div>
+
+      <div class="descu">
+        <p>¡GRANDES DESCUENTOS!</p>
+        
+      </div>
+
+      
+    <!-- Modal -->
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ingresa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">Usuario</label>
+                    <input type="email" class="form-control" id="bkInputEmail" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                    <label for="exampleInputPassword1">Contraseña</label>
+                    <input type="password" class="form-control" id="bkPassword">
+                    </div>
+                    <div class="form-group" style="text-align: center;">
+                        <button type="button" id="btnIngresar" onclick="login()" class="btn btn-primary">Ingresar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+                    </div>
+
+                </form>                                                                                          
+            </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="registro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Usuario</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Contraseña</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Confirmar contraseña</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                    <div class="form-group" style="text-align: center;">
+                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+                    </div>
+
+                </form>                                                                                          
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCTOS POR CATEGORIA -->
+
+    <h3 class="subtitulos">Productos por categoria</h3>
+    <div class=" Productos-categoria" style="text-align: center;">
+ 
+        <div class="card shadow" style="width: 18rem;">
+          <img src="images/c1.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card shadow" style="width: 18rem;">
+          <img src="images/c2.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card shadow" style="width: 18rem;">
+          <img src="images/c3.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+    </div>
+
+    <h3 class="subtitulos">Productos mas vendidos</h3>
+    <div class="masvendidos">
+        <div class="card mb-3 shadow" style="width: 500px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="images/c2.jpg" style="width: 270px; height: 250px;" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body" style="text-align: right;">
+                        <h5 class="card-title">Escobas</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <a href="#" class="btn btn-outline-primary">Agregar al carrito</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3 shadow" style="width: 500px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="images/c2.jpg" style="width: 270px; height: 250px;" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body" style="text-align: right;">
+                        <h5 class="card-title">Escobas</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <a href="#" class="btn btn-outline-primary">Agregar al carrito</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3 shadow" style="width: 500px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="images/c2.jpg" style="width: 270px; height: 250px;" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body" style="text-align: right;">
+                        <h5 class="card-title">Escobas</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <a href="#" class="btn btn-outline-primary">Agregar al carrito</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3 shadow" style="width: 500px; margin-bottom: 20px;">
+            <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="images/c3.jpg" style="width: 270px; height: 250px;" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body" style="text-align: right;">
+                    <h5 class="card-title">Traperas</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <a href="#" class="btn btn-outline-primary">Agregar al carrito</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="card mb-3 shadow" style="width: 500px;">
+          <div class="row no-gutters">
+          <div class="col-md-4">
+              <img src="images/c3.jpg" style="width: 270px; height: 250px;" alt="...">
+          </div>
+          <div class="col-md-8">
+              <div class="card-body" style="text-align: right;">
+                  <h5 class="card-title">Traperas</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <a href="#" class="btn btn-outline-primary">Agregar al carrito</a>
+              </div>
+          </div>
+          </div>
+      </div> 
+    </div>
+
+
+    <!-- FOOTER  -->
+
+    <footer>
+      <div class="footerB">
+        <img src="images/BEGA.png" class="logo" alt="">
+        <div class="footer_redes">
+          <i class="bi bi-instagram"></i>
+          <i class="bi bi-facebook"></i>
+          <i class="bi bi-whatsapp"></i>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="assets/Js/Login.js"></script>
+  </body>
+</html>
