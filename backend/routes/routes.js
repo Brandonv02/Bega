@@ -8,6 +8,8 @@ const {getSalesController, insertSalesController, updateSalesController, removeS
 const router = express.Router();
 
 // LOGIN
+router.get("/inicioSesion", (req, res) => { res.render("login", {alert: "",error:"",title: ""}); })
+router.get("/registro", (req, res) => { res.render("register", {alert: "",error:"",title: ""}); })
 router.post("/login", loginController);
 router.post("/newUser", newUserController);
 router.post("/updateUser", updateUserController);
@@ -30,6 +32,11 @@ router.post("/newproduct", nuevoProduct);
 router.post("/getProducts", buscarProductos);
 router.post("/updateProducts", actualizarProducto);
 router.post("/deleteProducts", borrarProducto);
+
+// router.get("/index", (req, res) => {
+  
+//   res.render("landing");
+// });  
 
 router.get("/prueba", (req, res) => {
   const fs = require("fs");

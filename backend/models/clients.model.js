@@ -15,6 +15,7 @@ const clientes = new connection.Schema({
   },
   correo: {
     require: [true, "El correo es necesario"],
+    unique: [true, "El correo ya existe"],
     type: String,
     require: true,
   },

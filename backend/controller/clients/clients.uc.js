@@ -6,7 +6,6 @@ exports.newClientUc = async (param) => {
 };
 
 exports.find = async (_filter, _options = {}) => {
-  console.log(_filter);
   const {sort} = _options;
   if (_filter) {
     const query = await Clients.findOne(_filter);
