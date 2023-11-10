@@ -1,19 +1,21 @@
+const connection = require("../config/connectionbd");
 
-
-const productos = new Schema({
-  idProducto: {
+const products = new connection.Schema({
+  codigo: {
+    unique: [true, "El codigo ya existe"],
+    type: String,
+    require: true,
+  },
+  stock: {
     type: Number,
     require: true,
   },
-  codigo: {
-    type: String,
-    require: true,
-  },
   descripcion: {
+    require: [true, "la descripcion es necesaria"],
     type: String,
     require: true,
   },
-  tipoProducto: {
+  tipo: {
     type: String,
     require: true,
   },
@@ -23,4 +25,6 @@ const productos = new Schema({
   },
 });
 
-module.exports = productos;
+const Productos = connection.model("productos", products);
+
+module.exports = Productos;

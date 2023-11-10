@@ -1,0 +1,114 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+.Productos-categoria{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.footerB{
+  height: 120px;
+  background-color: #0093ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  padding: 30px;
+}
+.logo{
+  width: 155px;
+}
+.footer_redes{
+  font-size: 35px;
+}
+.subtitulos{
+  margin: 60px 0px;
+  text-align: center;
+}
+.masvendidos{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+}
+.nav-link{
+  color: black !important;
+  font-size: 20px;
+  font-weight: 500 ;
+}
+.descu{
+  position: absolute;
+  top: 30%;
+  left: 6%;
+  font-size: 238%;
+  font-weight: 800;
+  letter-spacing: 13px;
+  background-color: white;
+  opacity: 0.7;
+  width: 50%;
+  text-align: center;
+}
+.coti_tittle{
+  text-align: center;
+  margin: 130px 0px 40px 0px;
+  /* box-shadow: 4px 4px 6px 1px #0093ff; */
+}
+.coti_form {
+  border: #0093ff 2px solid;
+  padding: 50px;
+  border-radius: 15px;
+}
+.cuerpo-carrito{
+  border: 1px black solid;
+  height: 500px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  padding: 26px;
+  flex-wrap: wrap;
+  margin: 10px;
+  overflow-y: scroll;
+}
+.card{
+  margin-bottom: 20px;
+}
+.TituloCarrito{
+  font-weight: 500;
+  text-align: center;
+  margin: 70px 0px 20px 0px;
+}
+.containerCarrito{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border: 1px black solid;
+  width: 650px;
+  height: 350px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.modalRegister{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sesion{
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0093ff;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.sesion:hover {
+  background-color: #0268b3;
+  color: white;
+  text-decoration: none;
+}
