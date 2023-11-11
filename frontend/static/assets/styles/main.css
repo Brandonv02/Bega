@@ -112,3 +112,11 @@ body{
   color: white;
   text-decoration: none;
 }
+
+.titulo-tipo{
+  display: flex;
+  justify-content: flex-start;
+  font-size: 40px;
+  padding: 0px 50px;
+  font-weight: bold;
+}

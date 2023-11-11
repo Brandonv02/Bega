@@ -1,7 +1,7 @@
 const user = require("../../models/users.model");
 
 exports.find = async (_filter, _options = {}) => {
-  console.log(_filter);
+  console.log(_filter, "filtro busqueda");
   const {sort} = _options;
   if (_filter) {
     const query = await user.findOne(_filter);
@@ -10,8 +10,8 @@ exports.find = async (_filter, _options = {}) => {
   if (sort) query.sort(sort);
   // query.forEach(populate || [], (p) => query.populate(p));
   // return await query.lean().exec();
-  const clientes = await user.find();
-  return clientes;
+  const users = await user.find();
+  return users;
 };
 
 exports.insert = async (info) => {

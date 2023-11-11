@@ -7,22 +7,22 @@ const swaggerDoc = require("./swagger.json");
 
 // swagger
 const swaggerUI = require("swagger-ui-express");
-const { buscarProductos } = require("./backend/controller/products/products.controller");
+const {buscarProductos} = require("./backend/controller/products/products.controller");
 
 require("dotenv").config();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "./frontend/views"));
 app.use(express.static(__dirname + "/frontend/static/assets"));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 app.use(morgan("dev"));
 app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 app.use(express.json());
 
 app.get("/", async (req, res) => {
   const productos = await buscarProductos();
-  console.log(productos, "llefo")
   res.render("landing", {
-    produc : productos
+    produc: productos,
+    sesion: "",
   });
 });
 

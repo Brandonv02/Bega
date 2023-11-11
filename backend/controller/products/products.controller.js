@@ -2,7 +2,7 @@ const {insert, find, update, remove} = require("./products.uc");
 
 exports.buscarProductos = async (req, res) => {
   const response = await find();
-  return response
+  return response;
 };
 
 exports.nuevoProduct = async (req, res) => {

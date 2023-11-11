@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light navbar-expand-lg fixed-top" style="background-color: #0093ff; height: 100px;"> 
-    <img src="images/BEGA.png" class="logo" alt="">
+    <img src="/images/BEGA.png" class="logo" alt="">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -27,8 +27,12 @@
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="display: flex;   width: 40px;">
             <i class="bi bi-search"></i>
         </button>
-        <a class="sesion" type="button" href="api/inicioSesion">Inicia sesion</a>
-        <a class="sesion" type="button" href="api/registro">Registrate</a>
+        <% if (sesion === "") { %>
+          <a class="sesion" type="button" href="api/inicioSesion">Inicia sesion</a>
+          <a class="sesion" type="button" href="api/registro">Registrate</a>
+        <% } else { %>
+          <p class="sesion">Bienvenido, <%=sesion.rol%>.</p>
+        <% } %>
       </form>
     </div>
   </nav>
