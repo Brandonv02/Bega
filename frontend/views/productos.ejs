@@ -1,0 +1,151 @@
+    <!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.1/font/bootstrap-icons.css">
+
+    <!-- ESTILOS PROPIOS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
+
+    <title>Listado de productos</title>
+  </head>
+  
+  
+    <body>
+    <%- include('../views/header'); %>
+    
+    <!-- CUERPO DE PAGINA -->
+    <div class="containermas"></div>
+    <section id="productosmas">
+        <h2>Listado de productos</h2><br>
+        <div class="container">
+            <h2>Registro de artículos</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab ex explicabo, aut perferendis laborum voluptas sequi blanditiis pariatur, iste, ipsam dolorem! Cupiditate atque, accusamus veritatis molestiae quis numquam est ipsa.</p>
+            <br>
+            <table id="products" class="display" tyle="width:100%">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Código</th>  
+                  <th>Descripción</th>
+                  <th>Valor</th>
+                  <th>Tipo</th>
+                  <th>Stock</th>
+                </tr>
+              </thead>
+
+            </table>
+          </div>
+
+    
+
+    <!-- Modal ingresar -->
+    <div class="modal fade" id="ingresar">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                        <div class="container">
+                            <h2>Ingresar</h2>
+                            <form action="/action_page.php">
+                                <div class="form-group">
+                                    <label for="email">Usuario:</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Ingrese correo" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">Contraseña:</label>
+                                    <input type="password" class="form-control" id="pwd" placeholder="Ingrese contraseña" name="pswd">
+                                </div>
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" name="remember">Recordarme</label>
+                                </div>
+                                <div class="fbtn-group">
+                                    <div class="col text-center">
+                                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal registrarse -->
+    <div class="modal fade" id="registrarse">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                    <body>
+
+                        <div class="container">
+                            <h2>Registrarse</h2>
+                            <form action="/action_page.php">
+                                <div class="form-group">
+                                    <label for="email">Usuario:</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Ingrese correo" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">Nueva contraseña:</label>
+                                    <input type="password" class="form-control" id="pwd" placeholder="Ingrese contraseña" name="pswd">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">Confirmar contraseña:</label>
+                                    <input type="password" class="form-control" id="pwd" placeholder="Ingrese contraseña" name="pswd">
+                                </div>
+                                <div class="form-group form-check">
+
+                                </div>
+                                <div class="fbtn-group">
+                                    <div class="col text-center">
+                                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+
+
+    <!-- FOOTER  -->
+    <%- include('../views/footer'); %>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+  </body>
+</html>

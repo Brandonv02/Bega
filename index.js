@@ -21,7 +21,7 @@ app.use(express.json());
 app.get("/", async (req, res) => {
   const productos = await buscarProductos();
   console.log(productos, "llefo")
-  res.render("landing", {
+  res.render("productos", {
     produc : productos
   });
 });
