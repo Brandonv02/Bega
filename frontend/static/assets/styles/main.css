@@ -4,7 +4,7 @@ body{
 
 h2 {
   text-align: center;
-  color: red;
+  
 }
 
 .Productos-categoria{
@@ -17,6 +17,15 @@ h2 {
   width: 100px;
 }
 
+.tabla h2{
+  text-align: center;
+  font-size: 30px;
+}
+
+.container {
+  margin-top: 90px;
+}
+
 .footerB_redes{
   font-size: 85px;
 }
@@ -26,31 +35,11 @@ h2 {
   text-align: center;
 }
 
-/* .masvendidos{
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: space-around;
-} */
-
 .nav-link{
   color: black !important;
   font-size: 20px;
   font-weight: 500 ;
 }
-
-/* .descu{
-  position: absolute;
-  top: 30%;
-  left: 6%;
-  font-size: 238%;
-  font-weight: 800;
-  letter-spacing: 13px;
-  background-color: white;
-  opacity: 0.7;
-  width: 50%;
-  text-align: center;
-} */
 
 .coti_tittle{
   text-align: center;
@@ -121,7 +110,7 @@ h2 {
 }
 
 .footerB{
-  height: 120px;
+  height: 80px;
   background-color: #0093ff;
   display: flex;
   justify-content: space-between;
@@ -130,7 +119,6 @@ h2 {
   padding: 30px;
 }
 
-
 .footerB a {
   display: block;
   text-decoration: none;
@@ -138,6 +126,24 @@ h2 {
   margin-bottom: 3px;
 }
 
-.footerB a:hover {
-  color: #41a2c0;
+.footerB .footer_redes img {
+  display: inline-block;
+  text-decoration: none;
+  width: 36px;
+  height: 36px;
+  line-height: 45px;
+  color: black;
+  margin-right: 10px;
+  text-align: center;
+  transition: all 300ms ease;
+}
+
+.footerB .footer_redes img{
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+} 
+
+.footerB .footer_redes img:hover{
+ -webkit-transform:scale(1.3);
+ transform:scale(1.3);
 }
