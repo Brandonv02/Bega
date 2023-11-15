@@ -7,7 +7,7 @@ body{
   flex-wrap: wrap;
 }
 .footerB{
-  height: 120px;
+  height: 90px;
   background-color: #0093ff;
   display: flex;
   justify-content: space-between;
@@ -16,7 +16,7 @@ body{
   padding: 30px;
 }
 .logo{
-  width: 155px;
+  width: 115px;
 }
 .footer_redes{
   font-size: 35px;
@@ -119,4 +119,55 @@ body{
   font-size: 40px;
   padding: 0px 50px;
   font-weight: bold;
+}
+
+.listaCarrito{
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #00000038;
+  height: 135px;
+  border-radius: 17px;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 6px 4px 13px 0px gray;
+}
+
+.listaCarrito img {
+  width: 90px;
+  border-radius: 10px;
+}
+
+.listaCarrito p {
+  margin-top: 18px;
+}
+
+.cantidad-carrito {
+  background-color: red;
+  color: white;
+  border-radius: 30%;
+  font-size: 12px;
+  padding: 4px;
+  right: 30px;
+}
+
+.eliminar-producto{
+  cursor: pointer;
+}
+
+.offcanvas-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 !important;
+}
+
+.offcanvas-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  height: 70px;
+  padding: 20px;
+  color: #f4f4f4;
 }

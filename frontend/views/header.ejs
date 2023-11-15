@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light navbar-expand-lg fixed-top" style="background-color: #0093ff; height: 100px;"> 
+<nav class="navbar navbar-light navbar-expand-lg fixed-top" style="background-color: #0093ff; height: 70px; padding: 10px;"> 
     <img src="/images/BEGA.png" class="logo" alt="">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto" style="margin-left: 20px;">
         <li class="nav-item ">
-          <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/">Inicio <span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="cotizaciones.html">Cotizaciones</a>
@@ -17,12 +17,12 @@
             Productos
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="productos.html">Listar Productos</a>
-            <a class="dropdown-item" href="RegistrarProducto.html">Registrar producto</a>
+            <a class="dropdown-item" href="">Listar Productos</a>
+            <a class="dropdown-item" href="api/products">Registrar producto</a>
           </div>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0" style="width: 525px;">
+      <form class="form-inline my-2 my-lg-0" style="width: 550px;">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="display: flex;   width: 40px;">
             <i class="bi bi-search"></i>
@@ -30,8 +30,14 @@
         <% if (sesion === "") { %>
           <a class="sesion" type="button" href="api/inicioSesion">Inicia sesion</a>
           <a class="sesion" type="button" href="api/registro">Registrate</a>
+          <button class="btn btn-primary" type="button" onclick="mostrarCarrito()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <i class="bi bi-cart-plus-fill"></i>
+          </button>
         <% } else { %>
-          <p class="sesion">Bienvenido, <%=sesion.rol%>.</p>
+          <p class="sesion">Bienvenido, <%= sesion %></p>
+          <button class="btn btn-primary" type="button" onclick="mostrarCarrito()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <i class="bi bi-cart-plus-fill"></i>
+          </button>
         <% } %>
       </form>
     </div>

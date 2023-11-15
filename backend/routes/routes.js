@@ -14,6 +14,11 @@ router.get("/inicioSesion", (req, res) => {
 router.get("/registro", (req, res) => {
   res.render("register", {alert: "", error: "", title: ""});
 });
+
+router.get("/products", async (req, res) => {
+  const productos = await buscarProductos();
+  res.render("products", {produc: productos, sesion: ""});
+});
 router.post("/login", loginController);
 router.post("/newUser", newUserController);
 router.post("/updateUser", updateUserController);

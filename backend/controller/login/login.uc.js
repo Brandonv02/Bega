@@ -1,7 +1,6 @@
 const user = require("../../models/users.model");
 
 exports.find = async (_filter, _options = {}) => {
-  console.log(_filter, "filtro busqueda");
   const {sort} = _options;
   if (_filter) {
     const query = await user.findOne(_filter);

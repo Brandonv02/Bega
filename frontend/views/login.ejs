@@ -25,7 +25,7 @@
             <label for="password">Contraseña:</label>
             <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" required>
           </div>
-          <button type="submit" class="boton-login" onclick="guardarCookie()">Iniciar sesión</button>
+          <button type="submit" class="boton-login" onclick="guardarCookie(correo)">Iniciar sesión</button>
           <a type="button" class="botonR" href="registro">Registrarse</a>
           <button type="button" class="boton-login" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Recuperar Contraseña
@@ -65,7 +65,7 @@
     let titulo = "<%= title %>"
     if (alerta != "") {
         Swal.fire({
-          position: "top-end",
+          // position: "top-end",
           title: titulo,
           text: alerta,
           icon: error

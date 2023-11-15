@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <!-- ESTILOS PROPIOS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tabla').DataTable();
+        });
+    </script>
+    <title>Registrar Productos</title>
+  </head>
+
+  <body>
+
+    <%- include('../views/header'); %>
+
+    <div class="container">
+        <h2>Registro de artículos</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab ex explicabo, aut perferendis laborum voluptas sequi blanditiis pariatur, iste, ipsam dolorem! Cupiditate atque, accusamus veritatis molestiae quis numquam est ipsa.</p>
+        <br>
+        <table id="tabla" class="display" tyle="width:100%">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Descripción</th>
+              <th>Material</th>
+              <th>Precio</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% produc.forEach(function(prod) { %>
+                <tr>
+                    <td><%=prod.codigo%></td>
+                    <td><%=prod.descripcion%></td>
+                    <td><%=prod.tipo%></td>
+                    <td><%=prod.valor%></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#descripcion"><i class='fas fa-eye'></i></button>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modificar"><i class='fas fa-edit'></i></button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminar"><i class='fas fa-trash-alt'></i></button>
+                  </td>
+                </tr>
+              <% }); %>
+          </tbody>
+        </table>
+      </div>
+        
+        <!-- Modal ingresar -->
+
+
+        <!-- Modal registrarse -->
+
+    </div>
+
+        <!-- Modal descripcion -->
+        <div class="modal fade" id="descripcion">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal body -->
+                    <div class="modal-body">
+
+                            <div class="container">
+                                <h2>Descripción artículo</h2>
+                                <form action="">
+                                    <div class="form-group">
+                                        <label for="">Material: </label>
+                                        <input type="" class="form-control" id="material" placeholder="Tipo material" disabled>
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Composición:</label>
+                                        <input type="" class="form-control" id="composicion" placeholder="Composicion" disabled>
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Tamaño:</label>
+                                        <input type="" class="form-control" id="tamaño" placeholder="Tamaño" disabled>
+                                            
+                                    </div>
+                                    <div class="fbtn-group">
+                                        <div class="col text-center">
+                                            <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal modificar -->
+        <div class="modal fade" id="modificar">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+
+                            <div class="container">
+                                <h2>Modificar artículo</h2>
+                                <form action="">
+                                    <div class="form-group">
+                                        <label for="">Material: </label>
+                                        <input type="" class="form-control" id="material" placeholder="Tipo material" disabled>
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Composición:</label>
+                                        <input type="" class="form-control" id="composicion" placeholder="Composicion" disabled>
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Tamaño:</label>
+                                        <input type="" class="form-control" id="tamaño" placeholder="Tamaño" disabled>
+                                            
+                                    </div>
+                                    <div class="fbtn-group">
+                                        <div class="col text-center">
+                                            <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn btn-warning" data-dismiss="modal">Modificar</button>
+                                            <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal eliminar -->
+        <div class="modal fade" id="eliminar">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+
+                            <div class="container">
+                                <h2>Eliminar artículo</h2>
+                                <form action="/action_page.php">
+                                    <div class="form-group">
+                                        <label for="">Material: </label>
+                                        <input type="" class="form-control" id="material" placeholder="Tipo material">
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Composición:</label>
+                                        <input type="" class="form-control" id="composicion" placeholder="Composicion">
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Tamaño:</label>
+                                        <input type="" class="form-control" id="tamaño" placeholder="Tamaño">
+                                            
+                                    </div>
+                                    <div class="fbtn-group">
+                                        <div class="col text-center">
+                                            <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal carrito -->
+    <div class="modal fade" id="carrito">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                        <div class="container">
+                            <h2 style="text-align:center;">Carrito de compras</h2>
+                            <form action="/action_page.php">
+                                <span class="itcarrito">
+                                    <img src="/assets/imagenes/cepillos.jpg" alt="" height="80px" >
+                                    <label>Cepillo cerdas duras</label><br>
+                                    <section class="increment" style="text-align:right;"><label>Precio  $7.500</label><br>
+                                    <label for="Cant">Cant.:</label>
+                                    <input type="number" id="Cant" name="tentacles" min="1" max="100"></section>
+                                </span>
+                                
+                                <span class="itcarrito">
+                                    <img src="/assets/imagenes/panos.jpg" alt="" height="80px" >
+                                    <label>Paños limpiadores</label><br>
+                                    <section class="increment" style="text-align:right;"><label>Precio  $2.300</label><br>
+                                    <label for="Cant">Cant.:</label>
+                                    <input type="number" id="Cant" name="tentacles" min="1" max="100"></section>
+                                </span>
+
+                                <span class="itcarrito">
+                                    <img src="/assets/imagenes/escobas.jpeg" alt="" height="80px" >
+                                    <label>Escoba cerdas suaves</label><br>
+                                    <section class="increment" style="text-align:right;"><label>Precio  $9.200</label><br>
+                                    <label for="Cant">Cant.:</label>
+                                    <input type="number" id="Cant" name="tentacles" min="1" max="100"></section>
+                                </span>
+                                <br><br>
+
+                                <div class="fbtn-group">
+                                    <div class="col text-center">
+                                        <button type="submit" class="btn btn-primary">Comprar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+<br>
+<br>
+      
+    <footer>
+        <%- include('../views/footer'); %>
+    </footer>
+  
+
+</body>
+</html>
