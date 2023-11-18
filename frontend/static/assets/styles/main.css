@@ -171,3 +171,8 @@ body{
   padding: 20px;
   color: #f4f4f4;
 }
+
+.head-tb{
+  display: flex;
+  justify-content: space-between;
+}

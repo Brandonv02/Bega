@@ -16,8 +16,13 @@ router.get("/registro", (req, res) => {
   res.render("register", {alert: "", error: "", title: ""});
 });
 
+router.get("/landing", async (req, res) => {
+  const productos = await buscarProductos();
+  res.render("landing", {produc: productos, sesion: "admin"});
+});
+
 router.get("/usuariosVista", async (req, res) => {
-  const usu = await getClientController(); 
+  const usu = await getClientController();
   console.log(usu);
   res.render("usuarios", {users: usu, sesion: "admin"});
 });

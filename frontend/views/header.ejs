@@ -6,22 +6,29 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto" style="margin-left: 20px;">
-        <li class="nav-item ">
-          <a class="nav-link" href="/">Inicio <span class="sr-only"></span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="cotizaciones.html">Cotizaciones</a>
-        </li>
         <% if (sesion === "admin") { %>
-        <li class="nav-item">
-          <a class="nav-link" href="usuariosVista">Usuarios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="products">Productos</a>
-        </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="landing">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cotizaciones.html">Cotizaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="usuariosVista">Usuarios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products">Productos</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item ">
+            <a class="nav-link" href="/">Inicio <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cotizaciones.html">Cotizaciones</a>
+          </li>
         <% } %>
       </ul>
-      <form class="form-inline my-2 my-lg-0" style="width: 565px;">
+      <form class="form-inline my-2 my-lg-0" style="width: 590px;">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="display: flex;   width: 40px;">
             <i class="bi bi-search"></i>
