@@ -1,5 +1,6 @@
 body{
     font-family: 'Raleway', sans-serif;
+
 }
 
 h2 {
@@ -77,8 +78,9 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 25px;
-  padding: 30px;
+  margin-top: 0px;
+  padding: 10px;
+
 }
 
 .footerB a {
