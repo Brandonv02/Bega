@@ -32,17 +32,17 @@ h2 {
   font-weight: 500 ;
 }
 
-.coti_tittle{
+/* .coti_tittle{
   text-align: center;
   margin: 130px 0px 40px 0px;
   /* box-shadow: 4px 4px 6px 1px #0093ff; */
-}
+} */
 
-.coti_form {
+/* .coti_form {
   border: #0093ff 2px solid;
   padding: 50px;
   border-radius: 15px;
-}
+} */
 
 .card{
   margin-bottom: 20px;
