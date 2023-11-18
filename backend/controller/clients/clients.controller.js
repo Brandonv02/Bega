@@ -3,7 +3,7 @@ const {newClientUc, find} = require("./clients.uc");
 
 exports.newClientController = async (req, res) => {
   const param = req.body;
-  const buscar = await this.getClientController(req.body);
+  const buscar = await this.getClientController({identificacion: id});
   if (buscar === null) {
     try {
       await newClientUc(param);
@@ -17,9 +17,8 @@ exports.newClientController = async (req, res) => {
   }
 };
 
-exports.getClientController = async (req, res) => {
-  const id = req.identificacion;
-  const response = await find({identificacion: id});
+exports.getClientController = async (_filter) => {
+  const response = await find(_filter);
   return response;
 };
 

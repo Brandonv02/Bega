@@ -11,14 +11,22 @@ const router = express.Router();
 router.get("/inicioSesion", (req, res) => {
   res.render("login", {alert: "", error: "", title: ""});
 });
+
 router.get("/registro", (req, res) => {
   res.render("register", {alert: "", error: "", title: ""});
 });
 
+router.get("/usuariosVista", async (req, res) => {
+  const usu = await getClientController(); 
+  console.log(usu);
+  res.render("usuarios", {users: usu, sesion: "admin"});
+});
+
 router.get("/products", async (req, res) => {
   const productos = await buscarProductos();
-  res.render("products", {produc: productos, sesion: ""});
+  res.render("products", {produc: productos, sesion: "admin"});
 });
+
 router.post("/login", loginController);
 router.post("/newUser", newUserController);
 router.post("/updateUser", updateUserController);

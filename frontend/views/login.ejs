@@ -71,24 +71,48 @@
           icon: error
       });
     }
+    
   var Usr = JSON.parse(localStorage.getItem("log")) || [];
-  
-  const guardarCookie = () => {
 
-    let campo = document.getElementById('correo').value
+const guardarCookie = () => {
+  let correo = document.getElementById('correo').value;
 
-    let Users = Usr.filter(element => element.id === id)
-    console.log(Users)
-    let usr ={
-      "id":campo,
+  // Verificar si el correo ya existe en el array Usr
+  const usuarioExistente = Usr.find(element => element.correo === correo);
+
+  if (!usuarioExistente) {
+    // Si el usuario no existe, agregarlo al array Usr
+    const nuevoUsuario = {
+      id: Usr.length + 1, // Puedes utilizar un contador o algún método para generar un nuevo id único
+      correo: correo
+    };
+    let alerta = "<%= alert %>"
+    if (alerta == ""){
+      Usr.push(nuevoUsuario);
+      saveLocal();
+
+      console.log('Usuario guardado correctamente:', nuevoUsuario);
+    } else {
+      Usr = [];
+      saveLocal();
     }
-    Usr.push(usr);
-    saveLocal();
+  } else {
+    console.log('El usuario ya existe en Usr:', usuarioExistente);
   }
+};
 
-  const saveLocal = () => {
-    localStorage.setItem("log", JSON.stringify(Usr));
-  };
+const saveLocal = () => {
+  localStorage.setItem("log", JSON.stringify(Usr));
+};
+
+const cerrarSesion = () => {
+  // Limpiar la información del usuario en el array y en localStorage
+  Usr = [];
+  saveLocal();
+
+  // También puedes redirigir al usuario a la página de inicio de sesión u otra página después de cerrar sesión
+  // window.location.href = "/pagina-de-inicio";
+};
    </script>
 
   </body>

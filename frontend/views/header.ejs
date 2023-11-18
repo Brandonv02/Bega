@@ -12,17 +12,16 @@
         <li class="nav-item">
           <a class="nav-link" href="cotizaciones.html">Cotizaciones</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            Productos
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="">Listar Productos</a>
-            <a class="dropdown-item" href="api/products">Registrar producto</a>
-          </div>
+        <% if (sesion === "admin") { %>
+        <li class="nav-item">
+          <a class="nav-link" href="usuariosVista">Usuarios</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="products">Productos</a>
+        </li>
+        <% } %>
       </ul>
-      <form class="form-inline my-2 my-lg-0" style="width: 550px;">
+      <form class="form-inline my-2 my-lg-0" style="width: 565px;">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="display: flex;   width: 40px;">
             <i class="bi bi-search"></i>
@@ -37,6 +36,9 @@
           <p class="sesion">Bienvenido, <%= sesion %></p>
           <button class="btn btn-primary" type="button" onclick="mostrarCarrito()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             <i class="bi bi-cart-plus-fill"></i>
+          </button>
+          <button class="btn btn-primary" style="margin-left: 8px;" type="button" onclick="cerrarSesion()">
+            Salir <i class="bi bi-box-arrow-left"></i>
           </button>
         <% } %>
       </form>

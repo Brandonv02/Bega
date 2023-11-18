@@ -26,7 +26,7 @@
             $('#tabla').DataTable();
         });
     </script>
-    <title>Registrar Productos</title>
+    <title>Usuarios</title>
   </head>
 
   <body>
@@ -34,36 +34,33 @@
     <%- include('../views/header'); %>
 
     <div class="container" style="margin-top: 85px;">
-        <h2>PRODUCTOS</h2>
+        <h2>USUARIOS</h2>
         
         <br>
         <table id="tabla" class="display" tyle="width:100%">
           <thead>
             <tr>
-              <th>Código</th>
-              <th>Stock</th>
-              <th>Descripción</th>
-              <th>Material</th>
-              <th>Precio</th>
+              <th>Identificacion</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Celular</th>
+              <th>Direccion</th>
+              <th>Contraseña</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <% produc.forEach(function(prod) { %>
+            <% users.forEach(function(user) { %>
                 <tr>
-                    <td><%=prod.codigo%></td>
-                    <td><%=prod.stock%></td>
-                    <td><%=prod.descripcion%></td>
-                    <td><%=prod.tipo%></td>
-                    <td><%=prod.valor%></td>
+                    <td><%=user.identificacion%></td>
+                    <td><%=user.nombre%></td>
+                    <td><%=user.correo%></td>
+                    <td><%=user.celular%></td>
+                    <td><%=user.direccion%></td>
+                    <td><%=user.contrasena%></td>
                     <td>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#descripcion"><i class='fas fa-eye'></i></button>
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modificar"
-                            data-codigo="<%= prod.codigo %>"
-                            data-descripcion="<%= prod.descripcion %>"
-                            data-tipo="<%= prod.tipo %>"
-                            data-valor="<%= prod.valor %>">
-                                <i class='fas fa-edit'></i></button>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modificar"><i class='fas fa-edit'></i></button>
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminar"><i class='fas fa-trash-alt'></i></button>
                   </td>
                 </tr>
@@ -129,36 +126,27 @@
 
                             <div class="container">
                                 <h2>Modificar artículo</h2>
-                                <form method="post" action="updateProducts">
+                                <form action="">
                                     <div class="form-group">
-                                        <label for="">Codigo: </label>
-                                        <input type="text" name="codigo" class="form-control" id="codigoProducto" placeholder="codigoProducto" >
+                                        <label for="">Material: </label>
+                                        <input type="" class="form-control" id="material" placeholder="Tipo material" disabled>
                                         
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Stock: </label>
-                                        <input type="text" name="stock" class="form-control" id="codigoProducto" placeholder="Stock" >
+                                        <label for="">Composición:</label>
+                                        <input type="" class="form-control" id="composicion" placeholder="Composicion" disabled>
                                         
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Descripcion:</label>
-                                        <input type="text" name="descripcion" class="form-control" id="Descripcion" placeholder="Descripcion" >
-                                        
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Tipo:</label>
-                                        <input type="text" name="tipo" class="form-control" id="Tipo" placeholder="Tipo" >
-                                            
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Valor:</label>
-                                        <input type="number" name="valor" class="form-control" id="Valor" placeholder="Valor" >
+                                        <label for="">Tamaño:</label>
+                                        <input type="" class="form-control" id="tamaño" placeholder="Tamaño" disabled>
                                             
                                     </div>
                                     <div class="fbtn-group">
                                         <div class="col text-center">
                                             <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
-                                            <button type="submit" class="btn btn-warning" data-dismiss="modal">Modificar</button>
+                                            <button type="button" class="btn btn-warning" data-dismiss="modal">Modificar</button>
+                                            <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
 
                                         </div>
                                     </div>
