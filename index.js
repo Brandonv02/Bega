@@ -29,5 +29,5 @@ app.get("/", async (req, res) => {
 app.use("/api", routes);
 
 app.listen(process.env.PORT, () => {
-  console.log("este es el puerto: " + process.env.PORT);
+  console.log("Puerto en uso: " + process.env.PORT);
 });

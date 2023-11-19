@@ -32,7 +32,7 @@
         <h2><b>Registro de artículos</b></h2>
         
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab ex explicabo, aut perferendis laborum voluptas sequi blanditiis pariatur, iste, ipsam dolorem! Cupiditate atque, accusamus veritatis molestiae quis numquam est ipsa.</p>
-        <div><button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#adicionar"><i class='fas fa-eye'></i> Adicionar productos</button></div><br>
+        <div><button type="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#adicionar"><i class='fas fa-eye'></i> Adicionar productos</button></div><br>
         <table id="tabla" class="display" style="width:100%">
             <thead>
                 <tr>
@@ -70,44 +70,36 @@
     <div class="modal fade" id="adicionar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                
-                    
-                    
+
                     <!-- Modal body -->
                     <div class="modal-body">
                             <div class="container">
                                 <h2>Adicionar productos</h2>
-                                    <form action="/action_page.php">
+                                    <form action="/api/newproduct" method="post">
                                         <div class="form-group">
-                                            <label for="">Código: </label>
-                                            <input type="text" class="form-control" id="codigo" placeholder="Código" >
+                                            Código: <input type="text" class="form-control" name="codigo" id="idcodigo" placeholder="Código" required>
                                             
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Descripción:</label>
-                                            <input type="text" class="form-control" id="descripcion" placeholder="Descripcion" >
+                                            Descripción: <input type="text" class="form-control" name="descripcion" id="iddescripcion" placeholder="Descripcion" >
                                             
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Tipo:</label>
-                                            <input type="text" class="form-control" id="tipo" placeholder="Tipo" >
+                                            Tipo: <input type="text" class="form-control" name="tipo" id="idtipo" placeholder="Tipo" >
                                             
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Valor:</label>
-                                            <input type="number" class="form-control" id="valor" placeholder="valor" >
+                                            Valor: <input type="number" class="form-control" name="valor" id="idvalor" placeholder="valor" >
                                                 
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Stock:</label>
-                                            <input type="number" class="form-control" id="stock" placeholder="Stock" >
+                                            Stock: <input type="number" class="form-control"  name="stock" id="idstock" placeholder="Stock" >
                                                 
                                         </div>
                                         <div class="fbtn-group">
                                             <div class="col text-center">
-                                                <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
-                                                <button type="button" class="btn btn-warning" data-dismiss="modal">Modificar</button>
-                                                <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+                                                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
+                                                <button type="submit" class="btn btn-outline-success" data-dismiss="modal">Guardar</button>
 
                                             </div>
                                         </div>
@@ -205,6 +197,8 @@
     </div>
     <br><br><br>
     <%- include('../views/footer'); %>
+
+    
 </body>
 
 </html>

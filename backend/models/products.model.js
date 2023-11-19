@@ -6,10 +6,6 @@ const products = new connection.Schema({
     type: String,
     require: true,
   },
-  stock: {
-    type: Number,
-    require: true,
-  },
   descripcion: {
     require: [true, "la descripcion es necesaria"],
     type: String,
@@ -20,6 +16,10 @@ const products = new connection.Schema({
     require: true,
   },
   valor: {
+    type: Number,
+    require: true,
+  },
+  stock: {
     type: Number,
     require: true,
   },
