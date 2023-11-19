@@ -23,13 +23,12 @@ router.get("/landing", async (req, res) => {
 
 router.get("/usuariosVista", async (req, res) => {
   const usu = await getClientController();
-  console.log(usu);
   res.render("usuarios", {users: usu, sesion: "admin"});
 });
 
 router.get("/products", async (req, res) => {
   const productos = await buscarProductos();
-  res.render("products", {produc: productos, sesion: "admin"});
+  res.render("products", {produc: productos, sesion: "admin", alert: "", error: "", title: ""});
 });
 
 router.post("/login", loginController);
@@ -40,7 +39,7 @@ router.post("/removeUser", removeUserController);
 // CLIENTS
 router.post("/newClient", newClientController);
 router.post("/getClient", getClientController);
-// router.post("/newClient", newClientController);
+router.post("/deleteClient", newClientController);
 // router.post("/newClient", newClientController);
 
 // SALES
@@ -55,10 +54,6 @@ router.post("/getProducts", buscarProductos);
 router.post("/updateProducts", actualizarProducto);
 router.post("/deleteProducts", borrarProducto);
 
-// router.get("/index", (req, res) => {
-
-//   res.render("landing");
-// });
 
 router.get("/prueba", (req, res) => {
   const fs = require("fs");

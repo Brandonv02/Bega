@@ -6,13 +6,19 @@ body{
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+footer {
+  background-color: #f8f9fa;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 .footerB{
-  height: 90px;
+  height: 80px;
   background-color: #0093ff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 25px;
   padding: 30px;
 }
 .logo{

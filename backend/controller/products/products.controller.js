@@ -6,11 +6,13 @@ exports.buscarProductos = async (req, res) => {
 };
 
 exports.nuevoProduct = async (req, res) => {
+  const productos = await this.buscarProductos();
   const param = req.body;
   try {
-    const response = await insert(param);
-    res.json(response);
+    await insert(param);
+    res.render("products", {produc: productos, sesion: "admin", alert: "Creado correctamente", error: "success", title: "Exito"});
   } catch (error) {
+    res.render("products", {produc: productos, sesion: "admin", alert: "El codigo ya existe", error: "error", title: "Error"});
     console.error(error);
   }
 };
@@ -18,8 +20,8 @@ exports.nuevoProduct = async (req, res) => {
 exports.borrarProducto = async (req, res) => {
   const id = req.body.codigo;
   try {
-    const response = await remove({codigo: id});
-    res.json(response);
+    await remove({codigo: id});
+    res.redirect("products");
   } catch (error) {
     res.status(error.status);
   }
@@ -28,6 +30,12 @@ exports.borrarProducto = async (req, res) => {
 exports.actualizarProducto = async (req, res) => {
   const id = req.body.codigo;
   const data = req.body;
-  const response = await update({codigo: id}, data);
-  res.json(response);
+  try {
+    const response = await update({codigo: id}, data);
+    if (response != null) {
+      res.redirect("products");
+    }
+  } catch (error) {
+    res.status(error.status);
+  }
 };
