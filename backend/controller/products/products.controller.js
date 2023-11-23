@@ -18,22 +18,29 @@ exports.nuevoProduct = async (req, res) => {
 };
 
 exports.borrarProducto = async (req, res) => {
+  console.log(req.body);
+  const productos = await this.buscarProductos();
   const id = req.body.codigo;
   try {
-    await remove({codigo: id});
-    res.redirect("products");
+    const response = await remove({codigo: id});
+    console.log(response);
+    if (response != null) {
+      res.render("products", {produc: productos, sesion: "admin", alert: "Eliminado correctamente", error: "success", title: "Exito"});
+    }
   } catch (error) {
     res.status(error.status);
   }
 };
 
 exports.actualizarProducto = async (req, res) => {
+  const productos = await this.buscarProductos();
   const id = req.body.codigo;
   const data = req.body;
   try {
     const response = await update({codigo: id}, data);
+    console.log(response)
     if (response != null) {
-      res.redirect("products");
+      res.render("products", {produc: productos, sesion: "admin", alert: "Actualizado correctamente", error: "success", title: "Exito"});
     }
   } catch (error) {
     res.status(error.status);

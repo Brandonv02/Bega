@@ -18,13 +18,10 @@ exports.insert = async (info) => {
 };
 
 exports.update = async (_filter, _clientInfo) => {
+  console.log(_filter, _clientInfo)
   return await user.findOneAndUpdate(_filter, _clientInfo, {new: true});
 };
 
-exports.remove = async (_id) => {
-  const res = await user.deleteOne(_id);
-  return {
-    found: res.n,
-    deleted: res.deletedCount,
-  };
+exports.remove = async (param) => {
+  return await user.findOneAndDelete(param);
 };

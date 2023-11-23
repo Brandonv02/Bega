@@ -1,4 +1,5 @@
 const express = require("express");
+const cookieParser = require('cookie-parser');
 const morgan = require("morgan");
 const app = express();
 const path = require("path");
@@ -15,14 +16,17 @@ app.set("views", path.join(__dirname, "./frontend/views"));
 app.use(express.static(__dirname + "/frontend/static/assets"));
 app.use(express.urlencoded({extended: true}));
 app.use(morgan("dev"));
+app.use(cookieParser());
 app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 app.use(express.json());
 
 app.get("/", async (req, res) => {
+  res.clearCookie('rol');
   const productos = await buscarProductos();
   res.render("landing", {
     produc: productos,
     sesion: "",
+    alert: "", error: "", title: ""
   });
 });
 

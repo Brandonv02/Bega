@@ -7,7 +7,6 @@ exports.find = async (filter) => {
 exports.insert = async (param) => {
   const id = param.codigo;
   const consulta = this.find({codigo: id});
-  console.log(consulta, "comsulta codigo");
   return await Productos.create(param);
 };
 
@@ -16,8 +15,7 @@ exports.update = async (_filter, _productInfo) => {
 };
 
 exports.remove = async (param) => {
-  const id = param._id;
-  const response = await Productos.findOneAndDelete(id);
-  return response;
+  console.log(param);
+  return await Productos.findOneAndDelete(param);
 };
 

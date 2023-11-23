@@ -6,6 +6,7 @@ exports.newClientUc = async (param) => {
 };
 
 exports.find = async (_filter, _options = {}) => {
+  console.log(_filter);
   const {sort} = _options;
   if (_filter) {
     const query = await Clients.findOne(_filter);
@@ -18,3 +19,10 @@ exports.find = async (_filter, _options = {}) => {
   return clientes;
 };
 
+exports.update = async (_filter, _productInfo) => {
+  return await Clients.findOneAndUpdate(_filter, _productInfo, {new: true});
+};
+
+exports.remove = async (param) => {
+  return await Clients.findOneAndDelete(param);
+};

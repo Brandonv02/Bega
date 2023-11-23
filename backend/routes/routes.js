@@ -1,10 +1,13 @@
 const express = require("express");
+
 // const fs = require("fs");
 const path = require("path");
 const {nuevoProduct, buscarProductos, actualizarProducto, borrarProducto} = require("../controller/products/products.controller");
-const {loginController, newUserController, updateUserController, removeUserController} = require("../controller/login/login.controller");
-const {newClientController, getClientController} = require("../controller/clients/clients.controller");
+const {loginController, newUserController, updateUserController, removeUserController, getUserController} = require("../controller/login/login.controller");
+const {newClientController, getClientController, updateClientController, deleteClient, newClient} = require("../controller/clients/clients.controller");
 const {getSalesController, insertSalesController, updateSalesController, removeSalesController} = require("../controller/sales/sales.controller");
+const auth = require('../middleware/auth');
+const { desencriptar } = require("../middleware/dataEncrypt");
 const router = express.Router();
 
 // LOGIN
@@ -17,18 +20,32 @@ router.get("/registro", (req, res) => {
 });
 
 router.get("/landing", async (req, res) => {
+  let rol = req.cookies.rol;
   const productos = await buscarProductos();
-  res.render("landing", {produc: productos, sesion: "admin"});
+  res.render("landing", {produc: productos, sesion: rol, alert: "", error: "", title: ""});
 });
 
-router.get("/usuariosVista", async (req, res) => {
+router.get("/usuariosVista",auth.verifyAdmin, async (req, res) => {
+  let rol = req.cookies.rol;
   const usu = await getClientController();
-  res.render("usuarios", {users: usu, sesion: "admin"});
+  res.render("usuarios", {users: usu, sesion: rol, alert: "", error: "", title: ""});
 });
 
-router.get("/products", async (req, res) => {
+router.get("/users",auth.verifyAdmin, async (req, res) => {
+  let rol = req.cookies.rol;
+  const usuarios = await getUserController();
+  const users = usuarios.map(res => ({
+    correo: res.correo,
+    contrasena: desencriptar(res.contrasena),
+    rol: res.rol
+  }));
+  res.render("users", {users: users, sesion: rol, alert: "", error: "", title: ""});
+});
+
+router.get("/products",auth.verifyAdmin, async (req, res) => {
+  let rol = req.cookies.rol;
   const productos = await buscarProductos();
-  res.render("products", {produc: productos, sesion: "admin", alert: "", error: "", title: ""});
+  res.render("products", {produc: productos, sesion: rol, alert: "", error: "", title: ""});
 });
 
 router.post("/login", loginController);
@@ -39,8 +56,9 @@ router.post("/removeUser", removeUserController);
 // CLIENTS
 router.post("/newClient", newClientController);
 router.post("/getClient", getClientController);
-router.post("/deleteClient", newClientController);
-// router.post("/newClient", newClientController);
+router.post("/updateClient", updateClientController);
+router.post("/deleteClient", deleteClient);
+router.post("/newClientadmin", newClient)
 
 // SALES
 router.post("/getSales", getSalesController);
