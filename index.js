@@ -4,6 +4,7 @@ const app = express();
 const path = require("path");
 const routes = require("./backend/routes/routes");
 const swaggerDoc = require("./swagger.json");
+// const funciones = require("./functions");
 
 // swagger
 const swaggerUI = require("swagger-ui-express");
@@ -21,7 +22,7 @@ app.use(express.json());
 app.get("/", async (req, res) => {
   const productos = await buscarProductos();
   console.log(productos, "llefo")
-  res.render("catalogo", {
+  res.render("productos", {
     produc : productos
   });
 });
