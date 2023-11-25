@@ -1,5 +1,5 @@
 body{
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 .Productos-categoria{
   display: flex;
@@ -56,14 +56,18 @@ footer {
 }
 .coti_tittle{
   text-align: center;
-  margin: 90px 0px 40px 0px;
-  /* box-shadow: 4px 4px 6px 1px #0093ff; */
+  margin: 150px 270px 283px 0px;
+  box-shadow: 0px 1px 20px 5px #0093ff;
+  color: #fff;
+  font-size: 60px;
+  background-color: #1471fd9e;
 }
 .coti_form {
   border: #0093ff 2px solid;
   padding: 50px;
   border-radius: 15px;
   margin-bottom: 70px;
+  background: #ffffffad;
 }
 .cuerpo-carrito{
   border: 1px black solid;

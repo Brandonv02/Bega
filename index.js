@@ -43,6 +43,8 @@ app.get("/cotizacion", (req, res) => {
 });
 
 app.post("/solicitudCotiza", async (req, res) => {
+  console.log(req.body);
+  return;
   const response = await sendEmail();
   if (response === "OK") {
     res.render("cotizacion", {sesion: "",

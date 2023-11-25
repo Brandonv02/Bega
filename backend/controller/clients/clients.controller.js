@@ -5,18 +5,30 @@ const {encriptar} = require("../../middleware/dataEncrypt");
 exports.newClientController = async (req, res) => {
   const param = req.body;
   const id = req.body.identificacion;
-  const buscar = await this.getClientController({identificacion: id});
-  if (buscar === null) {
+  const email = req.body.correo;
+  const buscarUser = await this.getClientController({identificacion: id});
+  const buscarEmail = await this.getClientController({correo: email});
+  if (buscarUser === null && buscarEmail === null) {
     try {
       await newClientUc(param);
       param.contrasena = encriptar(param.contrasena);
       await newUserController({correo: param.correo, contrasena: param.contrasena});
       res.render("login", {alert: "Se creo el cliente correctamente", error: "success", title: "Exito"});
     } catch (error) {
+      console.log(error);
       res.render("register", {alert: "Error al crear cliente", error: "error", title: "Error"});
     }
   } else {
-    res.render("register", {alert: "La identificacion ya existe", error: "error", title: "Error"});
+    res.render("register", {alert: "La identificacion o correo ya existe", error: "error", title: "Error"});
+  }
+};
+
+exports.newClientapi = async (req, res) => {
+  try {
+    const response = await newClientUc(req);
+    res.json(response);
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -58,7 +70,6 @@ exports.updateClientController = async (req, res) => {
 };
 
 exports.deleteClient = async (req, res) => {
-  console.log(req.body);
   const usu = await this.getClientController();
   const id = req.body.identificacion;
   try {

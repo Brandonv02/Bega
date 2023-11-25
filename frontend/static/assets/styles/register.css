@@ -11,7 +11,7 @@ body {
 .container {
     max-width: 400px;
     margin: 50px auto;
-    padding: 40px;
+    padding: 40px 50px 40px 45px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -26,6 +26,7 @@ h2 {
 
 .form-group {
     margin-bottom: 20px;
+    width: 330px;
 }
 
 label {
@@ -124,3 +125,12 @@ button,
     background-color: #0064ac;
     color: #fff;
 }
+
+.form-register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
