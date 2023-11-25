@@ -24,13 +24,13 @@
 
       <div id="carouselExampleInterval" class="carousel slide shadow" data-ride="carousel">
         <div class="carousel-inner" style="height: 320px; margin-top: 70px;">
-          <div class="carousel-item active" data-interval="4000">
+          <div class="carousel-item active" data-interval="3000">
             <img src="images/c1.jpg" class="d-block w-100" alt="...">
           </div>
-          <div class="carousel-item" data-interval="4000">
+          <div class="carousel-item" data-interval="3000">
             <img src="images/c2.jpg" class="d-block w-100" alt="...">
           </div>
-          <div class="carousel-item" data-interval="4000">
+          <div class="carousel-item" data-interval="3000">
             <img src="images/c3.jpg" class="d-block w-100" alt="...">
           </div>
         </div>
@@ -46,40 +46,40 @@
 
       <div class="descu">
         <p>¡GRANDES DESCUENTOS!</p>
-        
       </div>
-      
-    <!-- PRODUCTOS POR CATEGORIA -->
-
-    <h2 class="subtitulos">Productos</h2>
-    <div class=" Productos-categoria" style="text-align: center;">
-
-      <% produc.forEach(function(prod) { %>
-        <div class="card shadow" style="width: 18rem;">
-          <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" style="height: 300px;" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><%=prod.descripcion%></h5>
-            <p class="card-text">Tipo: <%=prod.tipo%></p>
-            <p class="card-text">Precio: <%=prod.valor%></p>
-            <p class="card-text">Disponibilidad: <%=prod.stock%></p>
-            <a href="#" class="btn btn-primary">Agregar al carrito</a>
+    
+    <br><br>
+    <section id="servicios">
+      <div class="container-card_serv" style="align-items: center;">
+        <div class="servicios_ofr">
+          <div class="servicios-img">
+            <img src="/images/aseo_hogar.jpg" href="#" style="width: 400px; height: 240px;" alt="...">
+          </div>
+          <div class="sl_hogar">
+            <p>Soluciones para hogar</p>
+          </div>
+          <div class="servicios-img">
+            <img src="/images/aseo_oficina.jpg" href="#" style="width: 400px; height: 240px;" alt="...">
+          </div>
+          <div class="sl_empresa">
+            <p>Soluciones para empresas</p>
           </div>
         </div>
-      <% }); %>
+      </div>
+    </section>
 
-    </div>
 
     <h3 class="subtitulos">Productos mas vendidos</h3>
     <div class="masvendidos">
         <div class="card mb-3 shadow" style="width: 500px;">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="images/c2.jpg" style="width: 270px; height: 250px;" alt="...">
+                    <img src="https://source.unsplash.com/300x400" style="width: 270px; height: 250px;" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body" style="text-align: right;">
                         <h5 class="card-title">Escobas</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p id="p-text" class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                         <a href="#" class="btn btn-outline-primary">Agregar al carrito</a>
                     </div>
                 </div>
@@ -88,12 +88,12 @@
         <div class="card mb-3 shadow" style="width: 500px;">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="images/c2.jpg" style="width: 270px; height: 250px;" alt="...">
+                    <img src="https://source.unsplash.com/300x400" style="width: 270px; height: 250px;" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body" style="text-align: right;">
-                        <h5 class="card-title">Escobas</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">Traperas</h5>
+                        <p id="p-text" class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                         <a href="#" class="btn btn-outline-primary">Agregar al carrito</a>
                     </div>
@@ -103,12 +103,12 @@
         <div class="card mb-3 shadow" style="width: 500px;">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="images/c2.jpg" style="width: 270px; height: 250px;" alt="...">
+                    <img src="https://source.unsplash.com/300x400" style="width: 270px; height: 250px;" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body" style="text-align: right;">
-                        <h5 class="card-title">Escobas</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">Cepillos</h5>
+                        <p id="p-text" class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                         <a href="#" class="btn btn-outline-primary">Agregar al carrito</a>
                     </div>
@@ -118,32 +118,42 @@
         <div class="card mb-3 shadow" style="width: 500px; margin-bottom: 20px;">
             <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="images/c3.jpg" style="width: 270px; height: 250px;" alt="...">
+                <img src="https://source.unsplash.com/300x400" style="width: 270px; height: 250px;" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body" style="text-align: right;">
-                    <h5 class="card-title">Traperas</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <h5 class="card-title">Limpiadores</h5>
+                    <p id="p-text" class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     <a href="#" class="btn btn-outline-primary">Agregar al carrito</a>
                 </div>
             </div>
             </div>
-        </div>
-        <div class="card mb-3 shadow" style="width: 500px;">
-          <div class="row no-gutters">
-          <div class="col-md-4">
-              <img src="images/c3.jpg" style="width: 270px; height: 250px;" alt="...">
-          </div>
-          <div class="col-md-8">
-              <div class="card-body" style="text-align: right;">
-                  <h5 class="card-title">Traperas</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <a href="#" class="btn btn-outline-primary">Agregar al carrito</a>
-              </div>
-          </div>
-          </div>
-      </div> 
+        </div> 
     </div>
+    
+    <!-- PRODUCTOS POR CATEGORIA -->
+
+    <h2 class="subtitulos">Productos</h2>
+    <section id="productos">
+      <div class="Productos-categoria" style="text-align: center;">
+
+        <% produc.forEach(function(prod) { %>
+          <div class="container-card" style="width: 18rem;">
+            <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" style="height: 300px;" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%=prod.descripcion%></h5>
+              <p class="card-text">Tipo: <%=prod.tipo%></p>
+              <p class="card-text">Precio: <%=prod.valor%></p>
+              <p class="card-text">Disponibilidad: <%=prod.stock%></p>
+              <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+          </div>
+        <% }); %>
+
+      </div>
+    </section>
+    
+    
 
 
     <!-- FOOTER  -->

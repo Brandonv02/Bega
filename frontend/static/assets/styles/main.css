@@ -14,6 +14,32 @@ h2 {
   margin-top: 90px;
 }
 
+.descu{
+  position: absolute;
+  top: 30%;
+  left: 6%;
+  font-size: 200%;
+  font-weight: 800;
+  letter-spacing: 13px;
+  background-color: white;
+  opacity: 0.7;
+  width: 50%;
+  text-align: center;
+}
+
+.subtitulos{
+  margin: 60px 0px;
+  text-align: center;
+}
+
+.card{
+  margin-bottom: 20px;
+}
+
+.card-text {
+  line-height: 0.8em;
+}
+
 .footerB_redes{
   font-size: 85px;
 }
@@ -22,10 +48,6 @@ h2 {
   color: black !important;
   font-size: 20px;
   font-weight: 500 ;
-}
-
-.card{
-  margin-bottom: 20px;
 }
 
 .modalRegister{
@@ -43,7 +65,6 @@ h2 {
   color: black;
   text-decoration: none;
   border-radius: 5px;
-  
 }
 
 .sesion:hover {
@@ -104,4 +125,77 @@ h2 {
   margin-bottom: 80px;
 }
 
+#productos {
+  text-align: center;
+}
 
+.container-card {
+  display: inline-table;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-radius: 15px;
+  padding: 18px;
+  text-align: center;
+  margin: 15px;
+  background-color: white;
+  box-shadow: 3px 3px 10px;
+  height: 100px;
+}
+
+.subtitulos{
+  margin: 60px 0px;
+  text-align: center;
+}
+
+.masvendidos{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+}
+
+#p-text {
+  margin-left: 100px;
+}
+
+/* .servicios_ofr{
+  display: flex;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+  -webkit-column-gap: 15px;
+          column-gap: 15px;
+  align-items: center;
+  justify-content: center;
+} */
+
+.servicios_ofr{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 15px;
+}
+
+.sl_hogar{
+  position: absolute;
+  bottom: 10%;
+  left: 21%;
+  font-size: 20px;
+  font-weight: 800;
+  background-color: white;
+  opacity: 0.7;
+  width: 300px;
+  text-align: center;
+}
+
+.sl_empresa{
+  position: absolute;
+  bottom: 10%;
+  right: 21%;
+  font-size: 20px;
+  font-weight: 800;
+  background-color: white;
+  opacity: 0.7;
+  width: 300px;
+  text-align: center;
+}
