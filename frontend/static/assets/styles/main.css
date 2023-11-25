@@ -25,7 +25,7 @@ footer {
   width: 115px;
 }
 .footer_redes{
-  font-size: 35px;
+  font-size: 30px;
 }
 .subtitulos{
   margin: 60px 0px;
@@ -38,8 +38,8 @@ footer {
   justify-content: space-around;
 }
 .nav-link{
-  color: black !important;
-  font-size: 20px;
+  color: white !important;
+  font-size: 18px;
   font-weight: 500 ;
 }
 .descu{
@@ -56,13 +56,14 @@ footer {
 }
 .coti_tittle{
   text-align: center;
-  margin: 130px 0px 40px 0px;
+  margin: 90px 0px 40px 0px;
   /* box-shadow: 4px 4px 6px 1px #0093ff; */
 }
 .coti_form {
   border: #0093ff 2px solid;
   padding: 50px;
   border-radius: 15px;
+  margin-bottom: 70px;
 }
 .cuerpo-carrito{
   border: 1px black solid;
@@ -105,9 +106,9 @@ footer {
 
 .sesion{
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px 20px 10px 10px;
   background-color: #0093ff;
-  color: black;
+  color: white;
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
@@ -181,4 +182,12 @@ footer {
 .head-tb{
   display: flex;
   justify-content: space-between;
+}
+
+.header-sign {
+  display: flex;
+  width: 590px;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
 }

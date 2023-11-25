@@ -18,7 +18,6 @@ exports.insert = async (info) => {
 };
 
 exports.update = async (_filter, _clientInfo) => {
-  console.log(_filter, _clientInfo)
   return await user.findOneAndUpdate(_filter, _clientInfo, {new: true});
 };
 

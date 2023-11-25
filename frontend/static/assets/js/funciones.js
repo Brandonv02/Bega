@@ -98,13 +98,13 @@ cerrarSesion = () => {
 
 pago = () => {
   // Recupera productos de localStorage
-  const productos = JSON.parse(localStorage.getItem("carrito")) || [];
-  console.log(productos);
-  // Muestra la lista de productos en el modal
   const listaProductos = document.getElementById("listaProductos");
-  productos.forEach((producto) => {
+  listaProductos.innerHTML ="";
+  console.log(carrito);
+  // Muestra la lista de productos en el modal
+  carrito.forEach((producto) => {
     const li = document.createElement("li");
-    li.textContent = `${producto.nombre} - $${producto.precio}`;
+    li.textContent += `${producto.nombre} - ${producto.precio}`;
     listaProductos.appendChild(li);
   });
 

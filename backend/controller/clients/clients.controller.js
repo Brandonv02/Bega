@@ -1,6 +1,6 @@
 const {newUserController} = require("../login/login.controller");
 const {newClientUc, find, update, remove} = require("./clients.uc");
-const {encriptar} = require('../../middleware/dataEncrypt');
+const {encriptar} = require("../../middleware/dataEncrypt");
 
 exports.newClientController = async (req, res) => {
   const param = req.body;

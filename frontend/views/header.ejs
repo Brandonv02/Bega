@@ -11,7 +11,7 @@
             <a class="nav-link" href="landing">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Cotizaciones</a>
+            <a class="nav-link" href="cotizacion">Cotizaciones</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="usuariosVista">Clientes</a>
@@ -27,29 +27,33 @@
             <a class="nav-link" href="landing">Inicio <span class="sr-only"></span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cotizaciones.html">Cotizaciones</a>
+            <a class="nav-link" href="cotizacion">Cotizaciones</a>
           </li>
         <% } %>
       </ul>
       <form class="form-inline my-2 my-lg-0" style="width: 590px;">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="display: flex;   width: 40px;">
             <i class="bi bi-search"></i>
-        </button>
+        </button> -->
         <% if (sesion === "") { %>
-          <a class="sesion" type="button" href="api/inicioSesion">Inicia sesion</a>
-          <a class="sesion" type="button" href="api/registro">Registrate</a>
-          <button class="btn btn-primary" type="button" onclick="mostrarCarrito()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-            <i class="bi bi-cart-plus-fill"></i>
-          </button>
+          <div class="header-sign">
+            <a class="sesion" type="button" href="api/inicioSesion">Inicia sesion</a>
+            <a class="sesion" type="button" href="api/registro">Registrate</a>
+            <button class="btn btn-primary" type="button" onclick="mostrarCarrito()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+              <i class="bi bi-cart-plus-fill"></i>
+            </button>
+          </div>
         <% } else { %>
-          <p class="sesion">Bienvenido, <%= sesion %></p>
-          <button class="btn btn-primary" type="button" onclick="mostrarCarrito()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-            <i class="bi bi-cart-plus-fill"></i>
-          </button>
-          <button class="btn btn-primary" style="margin-left: 8px;" type="button" onclick="cerrarSesion()">
-            Salir <i class="bi bi-box-arrow-left"></i>
-          </button>
+          <div class="header-sign">
+            <a href="#" class="sesion">Bienvenido, <%= sesion %></a>
+            <button class="btn btn-primary" type="button" onclick="mostrarCarrito()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+              <i class="bi bi-cart-plus-fill"></i>
+            </button>
+            <button class="btn btn-primary" style="margin-left: 8px;" type="button" onclick="cerrarSesion()">
+              Salir <i class="bi bi-box-arrow-left"></i>
+            </button>
+          </div>
         <% } %>
       </form>
     </div>

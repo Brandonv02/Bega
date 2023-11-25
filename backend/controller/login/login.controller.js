@@ -1,6 +1,6 @@
 const {buscarProductos} = require("../products/products.controller");
 const {find, insert, update, remove} = require("./login.uc");
-const {desencriptar, encriptar} = require('../../middleware/dataEncrypt');
+const {desencriptar, encriptar} = require("../../middleware/dataEncrypt");
 
 const cookieOptions = {
   maxAge: 1000 * 60 * 60 * 24, // Duración de la cookie en milisegundos (aquí, 1 día)
@@ -13,11 +13,11 @@ exports.loginController = async (req, res) => {
   const pass = req.body.contrasena;
   const response = await this.getUserController({correo: email});
   const productos = await buscarProductos();
-  response.contrasena = desencriptar(response.contrasena)
   if (response !== null) {
+    response.contrasena = desencriptar(response.contrasena);
     if ( response.correo === email && response.contrasena === pass ) {
       const rol = response.rol;
-      res.cookie('rol', rol, cookieOptions);
+      res.cookie("rol", rol, cookieOptions);
       res.render("landing", {produc: productos, sesion: rol, alert: "", error: "", title: ""});
     } else {
       res.render("login", {alert: "Contraseña incorrecta", error: "error", title: "Error"});
@@ -45,7 +45,7 @@ exports.updateUserController = async (req, res) => {
   try {
     const data = req.body;
     const id = data.correo;
-    data.contrasena = encriptar(data.contrasena)
+    data.contrasena = encriptar(data.contrasena);
     const usu = await this.getUserController();
     const response = await update({correo: id}, data);
     if (response != null) {

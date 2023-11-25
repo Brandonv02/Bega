@@ -6,8 +6,8 @@ const {nuevoProduct, buscarProductos, actualizarProducto, borrarProducto} = requ
 const {loginController, newUserController, updateUserController, removeUserController, getUserController} = require("../controller/login/login.controller");
 const {newClientController, getClientController, updateClientController, deleteClient, newClient} = require("../controller/clients/clients.controller");
 const {getSalesController, insertSalesController, updateSalesController, removeSalesController} = require("../controller/sales/sales.controller");
-const auth = require('../middleware/auth');
-const { desencriptar } = require("../middleware/dataEncrypt");
+const auth = require("../middleware/auth");
+const {desencriptar} = require("../middleware/dataEncrypt");
 const router = express.Router();
 
 // LOGIN
@@ -20,30 +20,47 @@ router.get("/registro", (req, res) => {
 });
 
 router.get("/landing", async (req, res) => {
-  let rol = req.cookies.rol;
+  const rol = req.cookies.rol;
   const productos = await buscarProductos();
   res.render("landing", {produc: productos, sesion: rol, alert: "", error: "", title: ""});
 });
 
-router.get("/usuariosVista",auth.verifyAdmin, async (req, res) => {
-  let rol = req.cookies.rol;
+router.get("/usuariosVista", auth.verifyAdmin, async (req, res) => {
+  const rol = req.cookies.rol;
   const usu = await getClientController();
   res.render("usuarios", {users: usu, sesion: rol, alert: "", error: "", title: ""});
 });
 
-router.get("/users",auth.verifyAdmin, async (req, res) => {
-  let rol = req.cookies.rol;
+router.get("/cotizacion", auth.verifyAdmin, (req, res) => {
+  const rol = req.cookies.rol;
+  res.render("cotizacion", {sesion: rol,
+    alert: "", error: "", title: ""});
+});
+
+router.get("/users", auth.verifyAdmin, async (req, res) => {
+  const rol = req.cookies.rol;
   const usuarios = await getUserController();
-  const users = usuarios.map(res => ({
+  const users = usuarios.map((res) => ({
     correo: res.correo,
     contrasena: desencriptar(res.contrasena),
-    rol: res.rol
+    rol: res.rol,
   }));
   res.render("users", {users: users, sesion: rol, alert: "", error: "", title: ""});
 });
 
-router.get("/products",auth.verifyAdmin, async (req, res) => {
-  let rol = req.cookies.rol;
+router.post("/solicitudCotiza", async (req, res) => {
+  const response = await sendEmail();
+  if (response === "OK") {
+    res.render("cotizacion", {sesion: rol,
+      alert: "Correo enviado correctamente", error: "success", title: "Exito"});
+  } else {
+    res.render("cotizacion", {sesion: rol,
+      alert: "Error al enviar correo", error: "Error", title: "Error"});
+  }
+});
+
+router.get("/products", auth.verifyAdmin, async (req, res) => {
+  const rol = req.cookies.rol;
   const productos = await buscarProductos();
   res.render("products", {produc: productos, sesion: rol, alert: "", error: "", title: ""});
 });
@@ -58,7 +75,7 @@ router.post("/newClient", newClientController);
 router.post("/getClient", getClientController);
 router.post("/updateClient", updateClientController);
 router.post("/deleteClient", deleteClient);
-router.post("/newClientadmin", newClient)
+router.post("/newClientadmin", newClient);
 
 // SALES
 router.post("/getSales", getSalesController);

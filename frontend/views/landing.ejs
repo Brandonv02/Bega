@@ -32,7 +32,7 @@
       <!-- CUERPO DE PAGINA -->
 
       <div id="carouselExampleInterval" class="carousel slide shadow" data-ride="carousel">
-        <div class="carousel-inner" style="height: 320px; margin-top: 70px;">
+        <div class="carousel-inner" style="height: 450px; margin-top: 70px;">
           <div class="carousel-item active" data-interval="4000">
             <img src="/images/c1.jpg" class="d-block w-100" alt="...">
           </div>
@@ -65,14 +65,16 @@
     <div class="Productos-categoria" style="text-align: center;">
       <% produc.forEach(function(prod) { %>
         <% if (prod.tipo === "fibra") { %>
-          <div class="card shadow" style="width: 18rem;">
-            <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" style="height: 300px;" alt="...">
+          <div class="card shadow" style="width: 18rem; border-radius: 45px;">
+            <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" 
+            style="height: 300px; border-radius: 45px 45px 0px 0px;" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%=prod.descripcion%></h5>
               <p class="card-text">Precio: <%=prod.valor%></p>
               <p class="card-text">Disponibilidad: <%=prod.stock%></p>
               <p class="card-text">Tipo: <%=prod.tipo%></p>
-              <a onclick="agregarCarrito('<%=prod._id%>','<%=prod.descripcion%>','<%=prod.valor%>','<%=prod.stock%>')" class="btn btn-primary">Agregar al carrito</a>
+              <a onclick="agregarCarrito('<%=prod._id%>','<%=prod.descripcion%>','<%=prod.valor%>','<%=prod.stock%>')"
+                class="btn btn-primary"><i class="bi bi-cart-plus-fill"></i> Agregar</a>
             </div>
           </div>
         <% } %>
@@ -83,14 +85,16 @@
     <div class="Productos-categoria" style="text-align: center;">
       <% produc.forEach(function(prod) { %>
         <% if (prod.tipo === "madera") { %>
-          <div class="card shadow" style="width: 18rem;">
-            <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" style="height: 300px;" alt="...">
+          <div class="card shadow" style="width: 18rem; border-radius: 45px;">
+            <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" 
+            style="height: 300px; height: 300px; border-radius: 45px 45px 0px 0px;" alt="">
             <div class="card-body">
               <h5 class="card-title"><%=prod.descripcion%></h5>
               <p class="card-text">Precio: <%=prod.valor%></p>
               <p class="card-text">Disponibilidad: <%=prod.stock%></p>
               <p class="card-text">Tipo: <%=prod.tipo%></p>
-              <a onclick="agregarCarrito('<%=prod._id%>','<%=prod.descripcion%>','<%=prod.valor%>','<%=prod.stock%>')" class="btn btn-primary">Agregar al carrito</a>
+              <a onclick="agregarCarrito('<%=prod._id%>','<%=prod.descripcion%>','<%=prod.valor%>','<%=prod.stock%>')" 
+                class="btn btn-primary"><i class="bi bi-cart-plus-fill"></i> Agregar</a>
             </div>
           </div>
           <% } %>
@@ -101,14 +105,16 @@
     <div class="Productos-categoria" style="text-align: center;">
       <% produc.forEach(function(prod) { %>
         <% if (prod.tipo === "tela") { %>
-          <div class="card shadow" style="width: 18rem;">
-            <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" style="height: 300px;" alt="...">
+          <div class="card shadow" style="width: 18rem; border-radius: 45px;">
+            <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" 
+            style="height: 300px; height: 300px; border-radius: 45px 45px 0px 0px;" alt="">
             <div class="card-body">
               <h5 class="card-title"><%=prod.descripcion%></h5>
               <p class="card-text">Precio: <%=prod.valor%></p>
               <p class="card-text">Disponibilidad: <%=prod.stock%></p>
               <p class="card-text">Tipo: <%=prod.tipo%></p>
-              <a onclick="agregarCarrito('<%=prod._id%>','<%=prod.descripcion%>','<%=prod.valor%>','<%=prod.stock%>')" class="btn btn-primary">Agregar al carrito</a>
+              <a onclick="agregarCarrito('<%=prod._id%>','<%=prod.descripcion%>','<%=prod.valor%>','<%=prod.stock%>')"
+                class="btn btn-primary"><i class="bi bi-cart-plus-fill"></i> Agregar</a>
             </div>
           </div>
           <% } %>
@@ -119,14 +125,16 @@
     <div class="Productos-categoria" style="text-align: center;">
       <% produc.forEach(function(prod) { %>
         <% if (prod.tipo === "retaso") { %>
-          <div class="card shadow" style="width: 18rem;">
-            <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" style="height: 300px;" alt="...">
+          <div class="card shadow" style="width: 18rem; border-radius: 45px;">
+            <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" 
+            style="height: 300px; height: 300px; border-radius: 45px 45px 0px 0px;" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%=prod.descripcion%></h5>
               <p class="card-text">Precio: <%=prod.valor%></p>
               <p class="card-text">Disponibilidad: <%=prod.stock%></p>
               <p class="card-text">Tipo: <%=prod.tipo%></p>
-              <a onclick="agregarCarrito('<%=prod._id%>','<%=prod.descripcion%>','<%=prod.valor%>','<%=prod.stock%>')" class="btn btn-primary">Agregar al carrito</a>
+              <a onclick="agregarCarrito('<%=prod._id%>','<%=prod.descripcion%>','<%=prod.valor%>','<%=prod.stock%>')" 
+                class="btn btn-primary"><i class="bi bi-cart-plus-fill"></i> Agregar</a>
             </div>
           </div>
           <% } %>
@@ -145,7 +153,7 @@
       <div class="offcanvas-footer">
         <!-- <button type="button" class="btn btn-success">Comprar</button> -->
         <!-- <a class="btn btn-success" role="button" href="/procesarCompra">Comprar</a> -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPago">
+        <button onclick="pago()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPago">
           Comprar
         </button>
         <span id="totalPrice"></span>
