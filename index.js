@@ -27,6 +27,16 @@ app.get("/", async (req, res) => {
   });
 });
 
+app.get("/", async (req, res) => {
+  res.clearCookie("rol");
+  const productos = await buscarProductos();
+  res.render("landing", {
+    produc: productos,
+    sesion: "",
+    alert: "", error: "", title: "",
+  });
+});
+
 app.use("/api", routes);
 
 app.listen(process.env.PORT, () => {

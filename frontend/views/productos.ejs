@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     
@@ -32,11 +33,10 @@
         <h2><b>Listado de productos</b></h2>
         
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab ex explicabo, aut perferendis laborum voluptas sequi blanditiis pariatur, iste, ipsam dolorem! Cupiditate atque, accusamus veritatis molestiae quis numquam est ipsa.</p>
-        <div><button type="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#adicionar"><i class='fas fa-eye'></i> Adicionar productos</button></div><br>
+        <div><button type="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#adicionar"><i class="bi bi-database-fill-add"></i> Adicionar productos</button></div><br>
         <table id="tabla" class="display" style="width:100%">
             <thead>
                 <tr>
-                    <!-- <th>Id</th> -->
                     <th>Código</th>  
                     <th>Descripción</th>
                     <th>Tipo</th>
@@ -48,16 +48,15 @@
             <tbody>
                 <% produc.forEach(function(prod) { %>
                 <tr>
-                    <!-- <td><%=prod.id%></td> -->
                     <td><%=prod.codigo%></td>
                     <td><%=prod.descripcion%></td>
                     <td><%=prod.tipo%></td>
                     <td><%=prod.valor%></td>
                     <td><%=prod.stock%></td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ripcion"><i class='fas fa-eye'></i></button>
-                        <button type="button" class="btn btn-warning" data-toggle="modal" onclick="prod(`<%=prod.codigo%>`,`<%=prod.descripcion%>`,`<%=prod.tipo%>`,`<%=prod.valor%>`,`<%=prod.stock%>`)" data-target="#modificar"><i class='fas fa-edit'></i></button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#eliminar"><i class='fas fa-trash-alt'></i></button>
+
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modificar" onclick="modificarProd(`<%=prod.codigo%>`,`<%=prod.descripcion%>`,`<%=prod.tipo%>`,`<%=prod.valor%>`,`<%=prod.stock%>`)"><i class='fas fa-edit'></i></button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminar" onclick="eliminarProd('<%=prod.codigo%>','<%=prod.descripcion%>')"><i class='fas fa-trash-alt'></i></button>
         
                     </td>
                 </tr>
@@ -67,7 +66,7 @@
     </div>
     
     <!-- Modal adicionar -->
-    <div class="modal fade" id="adicionar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="adicionar">
         <div class="modal-dialog">
             <div class="modal-content">
                 
@@ -75,31 +74,31 @@
                     <div class="modal-body">
                             <div class="container">
                                 <h2>Adicionar productos</h2>
-                                    <form action="/api/newproduct" method="post">
+                                    <form method="post" action="/api/newproduct">
                                         <div class="form-group">
-                                            Código: <input type="text" class="form-control" name="codigo" placeholder="Código" required>
+                                            Código: <input type="text" class="form-control" id="codpro" name="codigo" placeholder="Código" required>
                                             
                                         </div>
                                         <div class="form-group">
-                                            Descripción: <input type="text" class="form-control" name="descripcion" placeholder="Descripcion" >
+                                            Descripción: <input type="text" class="form-control" id="descr" name="descripcion" placeholder="Descripcion" >
                                             
                                         </div>
                                         <div class="form-group">
-                                            Tipo: <input type="text" class="form-control" name="tipo" placeholder="Tipo" >
+                                            Tipo: <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Tipo" >
                                             
                                         </div>
                                         <div class="form-group">
-                                            Valor: <input type="number" class="form-control" name="valor" placeholder="valor" >
+                                            Valor: <input type="number" class="form-control" id="valor" name="valor" placeholder="valor" >
                                                 
                                         </div>
                                         <div class="form-group">
-                                            Stock: <input type="number" class="form-control"  name="stock" placeholder="Stock" >
+                                            Stock: <input type="number" class="form-control" id="stock" name="stock" placeholder="Stock" >
                                                 
                                         </div>
                                         <div class="fbtn-group">
                                             <div class="col text-center">
                                                 <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
-                                                <button type="submit" class="btn btn-outline-success" data-dismiss="modal" >Guardar</button>
+                                                <button type="submit" class="btn btn-outline-success" >Guardar</button>
 
                                             </div>
                                         </div>
@@ -120,31 +119,31 @@
                 <div class="modal-body">
                         <div class="container">
                             <h2>Modificar artículo</h2>
-                            <form action="/api/updateProducts" method="post">
+                            <form method="post" action="/api/updateProducts">
                                 <div class="form-group">
                                     Código: <input type="text" class="form-control" id="idcodigo" required>
                                     
                                 </div>
                                 <div class="form-group">
-                                    Descripción: <input type="text" class="form-control" id="iddescripcion" >
+                                    Descripción: <input type="text" class="form-control" id="iddescripcion" required>
                                     
                                 </div>
                                 <div class="form-group">
-                                    Tipo: <input type="text" class="form-control" id="idtipo" >
+                                    Tipo: <input type="text" class="form-control" id="idtipo" required>
                                     
                                 </div>
                                 <div class="form-group">
-                                    Valor: <input type="number" class="form-control" id="idvalor" >
+                                    Valor: <input type="number" class="form-control" id="idvalor" required>
                                         
                                 </div>
                                 <div class="form-group">
-                                    Stock: <input type="number" class="form-control" id="idstock" >
+                                    Stock: <input type="number" class="form-control" id="idstock" required>
                                         
                                 </div>
                                 <div class="fbtn-group">
                                     <div class="col text-center">
                                         <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
-                                        <button type="submit" class="btn btn-outline-success" data-dismiss="modal">Guardar</button>
+                                        <button type="submit" class="btn btn-outline-success">Guardar</button>
 
                                     </div>
                                 </div>
@@ -158,44 +157,32 @@
     </div>
 
     <!-- Modal eliminar -->
-    <!-- <div class="modal fade" id="eliminar">
+    <div class="modal fade" id="eliminar">
         <div class="modal-dialog">
-            <div class="modal-content"> -->
+            <div class="modal-content">
 
 
                 <!-- Modal body -->
-                <!-- <div class="modal-body">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="confirmarEliminar">Confirmar eliminación</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                    <div class="modal-body">
+                        ¿Está seguro de eliminar este artículo?
+                            <form method="post" action="/api/deleteProducts">
+                                <div class="form-group">
+                                    Código: <input type="text" class="form-control" name="codigo" id="codproducto" readonly>
+                                </div>
+                                <div class="form-group">
+                                    Descripción: <input type="text" class="form-control" name="descripcion" id="descripcion" readonly>
+                                </div>
+                                
 
-                        <div class="container">
-                            <h2>Eliminar artículo</h2>
-                            <form action="/action_page.php">
-                                <div class="form-group">
-                                    Código: <input type="text" class="form-control" name="codigo" id="idcodigo" placeholder="Código" required>
-                                    
-                                </div>
-                                <div class="form-group">
-                                    Descripción: <input type="text" class="form-control" name="descripcion" id="iddescripcion" placeholder="Descripcion" >
-                                    
-                                </div>
-                                <div class="form-group">
-                                    Tipo: <input type="text" class="form-control" name="tipo" id="idtipo" placeholder="Tipo" >
-                                    
-                                </div>
-                                <div class="form-group">
-                                    Valor: <input type="number" class="form-control" name="valor" id="idvalor" placeholder="valor" >
-                                        
-                                </div>
-                                <div class="form-group">
-                                    Stock: <input type="number" class="form-control"  name="stock" id="idstock" placeholder="Stock" >
-                                        
-                                </div>
-                                <div class="fbtn-group">
-                                    <div class="col text-center">
-                                        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
-                                        <button type="submit" class="btn btn-outline-success" data-dismiss="modal">Guardar</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
 
-                                    </div>
-                                </div>
+                                    
+                                
                             </form>
                         </div>
 
@@ -203,22 +190,36 @@
 
             </div>
         </div>
-    </div> -->
+    </div>
+    
     <br><br><br>
     <%- include('../views/footer'); %>
 
-    <!-- <script>
-        function prod();
-    </script> -->
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="/js/functions.js"></script> -->
     <script>
-        function prod(codigo,descripcion,tipo,valor,stock) {
-            idcodigo.value = codigo,
-            iddescripcion.value = descripcion,
-            idtipo.value = tipo,
-            idvalor.value = valor,
-            idstock.value = stock
+     
+        const modificarProd = (codigo,descrip,tipo,valor,stock) => {
+            let campo_codigo = document.getElementById('idcodigo')
+            let campo_descripcion = document.getElementById('iddescripcion')
+            let campo_tipo = document.getElementById('idtipo')
+            let campo_valor = document.getElementById('idvalor')
+            let campo_stock = document.getElementById('idstock')
+            
+            campo_codigo.value = codigo
+            campo_descripcion.value = descrip
+            campo_tipo.value = tipo
+            campo_valor.value = valor
+            campo_stock.value = stock
+
+        }
+        const eliminarProd = (codigo,descrip) => {
+            let campo_codigo = document.getElementById('codproducto')
+            let campo_descripcion = document.getElementById('descripcion')
+            
+            campo_codigo.value = codigo
+            campo_descripcion.value = descrip 
         }
     </script>
 

@@ -7,6 +7,13 @@ const {newClientController, getClientController} = require("../controller/client
 const {getSalesController, insertSalesController, updateSalesController, removeSalesController} = require("../controller/sales/sales.controller");
 const router = express.Router();
 
+router.get("/landing", async (req, res) => {
+  const rol = req.cookies.rol;
+  const productos = await buscarProductos();
+  res.render("landing", {produc: productos, sesion: rol, alert: "", error: "", title: ""});
+});
+
+
 // LOGIN
 router.get("/inicioSesion", (req, res) => { res.render("login", {alert: "",error:"",title: ""}); })
 router.get("/registro", (req, res) => { res.render("register", {alert: "",error:"",title: ""}); })
