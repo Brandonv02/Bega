@@ -38,7 +38,7 @@ exports.actualizarProducto = async (req, res) => {
   const data = req.body;
   try {
     const response = await update({codigo: id}, data);
-    console.log(response)
+    console.log(response);
     if (response != null) {
       res.render("products", {produc: productos, sesion: "admin", alert: "Actualizado correctamente", error: "success", title: "Exito"});
     }

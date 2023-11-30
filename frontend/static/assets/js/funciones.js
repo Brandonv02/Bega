@@ -1,11 +1,11 @@
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-const agregarCarrito = (id, name, pricePro, image) => {
+agregarCarrito = (id, name, pricePro, image) => {
   const productoagregado ={
     "id": id,
     "nombre": name,
-    "precio": pricePro,
+    "precio": parseInt(pricePro),
     "Image": image,
     "cantidad": 0,
   };
@@ -13,44 +13,44 @@ const agregarCarrito = (id, name, pricePro, image) => {
   // El boton  Carrito debe llamar una funcion que:
   // 1. leer si hay una cookie..analizar si hay objetos repetidos entre la coockie y el array.
   // 2. pintar el offcanvas con los objetos encontrados en el carrito
-  const counter = 0;
+
   const carritoF = carrito.filter((element) => element.id === id);
   if (carritoF.length > 0) {
-    console.log(carritoF);
     carritoF[0].cantidad = carritoF[0].cantidad + 1;
+    carritoF[0].precio = carritoF[0].precio + parseInt(pricePro);
     mostrarCarrito();
   } else {
     carrito.push(productoagregado);
   }
-
   saveLocal();
-  mostrarCarrito();
+  mostrarCarrito(pricePro);
 };
 
-const mostrarCarrito = () => {
+const mostrarCarrito = (priceReal) => {
   const container = document.getElementById("container-carrito");
 
   container.innerHTML ="";
   // cardlist.innerHTML= "";
   carrito.forEach((element) => {
-    const idPro = document.getElementById("idProdu");
-
     const cardlist = document.createElement("div");
     cardlist.setAttribute("class", "listaCarrito");
 
     const imagen = document.createElement("img");
     const nombrePro = document.createElement("p");
     const price = document.createElement("p");
-    const doc = document.createElement("p");
     const eliminar = document.createElement("span");
     const cantidad = document.createElement("span");
+    const disminuir = document.createElement("span");
+    const aumentar = document.createElement("span");
     cantidad.setAttribute("class", "cantidad-carrito");
 
     // cardlist.appendChild(doc)
     cardlist.appendChild(imagen);
     cardlist.appendChild(nombrePro);
     cardlist.appendChild(price);
+    cardlist.appendChild(disminuir);
     cardlist.appendChild(cantidad);
+    cardlist.appendChild(aumentar);
     cardlist.appendChild(eliminar);
 
     eliminar.innerText = "x";
@@ -59,13 +59,95 @@ const mostrarCarrito = () => {
     imagen.src = "https://source.unsplash.com/300x400/?nombre";
     nombrePro.textContent = element.nombre;
     price.textContent = element.precio;
+    disminuir.innerText = "-";
+    disminuir.className = "disminuir-producto";
     cantidad.textContent = element.cantidad;
+    aumentar.innerText = "+";
+    aumentar.className = "aumentar-producto";
     eliminar.addEventListener("click", () => {
       eliminarPro(element.id);
     });
-
+    aumentar.addEventListener("click", ()=> {
+      const carritoF = carrito.filter((param) => param.id === element.id);
+      if (carritoF.length > 0) {
+        element.cantidad = carritoF[0].cantidad + 1;
+        mostrarCarrito();
+      }
+    });
+    disminuir.addEventListener("click", ()=> {
+      const carritoF = carrito.filter((param) => param.id === element.id);
+      if (carritoF.length > 0 && carritoF[0].cantidad > 0) {
+        element.cantidad = carritoF[0].cantidad - 1;
+        mostrarCarrito();
+      }
+    });
     container.appendChild(cardlist);
   });
+  const total = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0);
+  console.log(total, "total");
+  const footerModal = document.getElementById("totalPrice");
+  footerModal.innerHTML = `Total: $${total}`;
+
+  const mercadopago = new MercadoPago("TEST-bce3d891-e3e0-4460-b90a-090a25077b37", {
+    locale: "es-AR", // The most common are: 'pt-BR', 'es-AR' and 'en-US'
+  });
+
+  const checkOut = document.getElementById("checkout-btn");
+  checkOut.addEventListener("click", function() {
+    checkOut.remove();
+
+    const orderData = {
+      quantity: 1,
+      description: "Compra de prueba",
+      price: 50000,
+    };
+
+    fetch("http://localhost:3002/create_preference", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderData),
+    })
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(preference) {
+          createCheckoutButton(preference.id);
+
+          $(".shopping-cart").fadeOut(500);
+          setTimeout(() => {
+            $(".container_payment").show(500).fadeIn();
+          }, 500);
+        })
+        .catch(function(err) {
+          console.error(err);
+          $("#checkout-btn").attr("disabled", false);
+        });
+  });
+
+  function createCheckoutButton(preferenceId) {
+    // Initialize the checkout
+    const bricksBuilder = mercadopago.bricks();
+
+    const renderComponent = async (bricksBuilder) => {
+      if (window.checkoutButton) window.checkoutButton.unmount();
+      await bricksBuilder.create(
+          "wallet",
+          "button-checkout", // class/id where the payment button will be displayed
+          {
+            initialization: {
+              preferenceId: preferenceId,
+            },
+            callbacks: {
+              onError: (error) => console.error(error),
+              onReady: () => {},
+            },
+          },
+      );
+    };
+    window.checkoutButton = renderComponent(bricksBuilder);
+  }
 };
 
 eliminarPro = (id) => {
@@ -96,22 +178,4 @@ cerrarSesion = () => {
   window.location.href = "/";
 };
 
-pago = () => {
-  // Recupera productos de localStorage
-  const listaProductos = document.getElementById("listaProductos");
-  listaProductos.innerHTML ="";
-  console.log(carrito);
-  // Muestra la lista de productos en el modal
-  carrito.forEach((producto) => {
-    const li = document.createElement("li");
-    li.textContent += `${producto.nombre} - ${producto.precio}`;
-    listaProductos.appendChild(li);
-  });
-
-  // Calcula la suma total de los productos
-  const totalPagar = productos.reduce((total, producto) => total + producto.precio, 0);
-
-  // Muestra el total en el modal
-  document.getElementById("totalPagar").textContent = totalPagar;
-};
 

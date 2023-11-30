@@ -19,6 +19,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
     <!-- ESTILOS PROPIOS -->
     <link rel="shortcut icon" href="/images/detergente.png" />
     <link rel="stylesheet" href="/styles/main.css">
@@ -148,13 +149,13 @@
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
     <div class="offcanvas-body">
-      <div id="container-carrito">
+      <div id="container-carrito" style="padding: 10px;">
       </div>
       <div class="offcanvas-footer">
         <!-- <button type="button" class="btn btn-success">Comprar</button> -->
         <!-- <a class="btn btn-success" role="button" href="/procesarCompra">Comprar</a> -->
-        <button onclick="pago()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPago">
-          Comprar
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPago">
+          CheckOut
         </button>
         <span id="totalPrice"></span>
       </div>
@@ -162,25 +163,21 @@
   </div>
 
   <!-- Modal pago -->
-<div class="modal fade" id="modalPago" tabindex="-1" role="dialog" aria-labelledby="modalPagoLabel" aria-hidden="true">
+<div class="modal fade" id="modalPago">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalPagoLabel">Resumen del Pago</h5>
+        <h5 class="modal-title" id="modalPagoLabel">Procede con el pago: </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <!-- Contenido del cuerpo del modal -->
-        <p>Productos en el carrito:</p>
-        <ul id="listaProductos"></ul>
-        <p>Total a pagar: $<span id="totalPagar"></span></p>
+      <div class="modal-body" id="shop-content">
+        <button type="button" id="checkout-btn" class="btn btn-success" >Comprar</button>
+        <div id="button-checkout"></div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <!-- Puedes agregar aquí un botón para proceder al pago -->
-      </div>
+      <!-- <div class="modal-footer">
+      </div> -->
     </div>
   </div>
 </div>
