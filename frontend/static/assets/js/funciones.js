@@ -99,7 +99,7 @@ const mostrarCarrito = (priceReal) => {
     const orderData = {
       quantity: 1,
       description: "Compra de prueba",
-      price: 50000,
+      price: total,
     };
 
     fetch("http://localhost:3002/create_preference", {
