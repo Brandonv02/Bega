@@ -14,17 +14,25 @@
     <link rel="stylesheet" href="styles/main.css">
     <title>BEGA - Cotizaciones</title>
   </head>
-
+  <style>  
+    body {
+      background-image: url('/images/limp_cotiza.jpg');
+      background-size: cover;
+    }
+    
+    img {
+      opacity: 0.6;
+    }
+  </style>
+    
   <%- include('../views/header'); %>
   <body>
-
-    
     <!-- CUERPO DE PAGINA -->
 
       <div class="container" style="margin-top: 108px;">
         <h2 class="coti_tittle">Cotiza con nosotros</h2>
         <form class="coti_form shadow">
-          <div class="form-row ">
+          <div class="form-row">
             <div class="form-group col-md-6">
               Nombre contacto <input type="email" class="form-control" id="inputEmail4">
             </div>

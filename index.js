@@ -22,7 +22,7 @@ app.use(express.json());
 app.get("/", async (req, res) => {
   const productos = await buscarProductos();
   console.log(productos, "llefo")
-  res.render("productos", {
+  res.render("catalogo", {
     produc : productos
   });
 });

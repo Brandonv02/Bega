@@ -1,5 +1,6 @@
 body{
     font-family: "Raleway", sans-serif;
+  
 }
 
 h2 {
@@ -12,6 +13,11 @@ h2 {
 
 .container {
   margin-top: 90px;
+}
+
+.coti_form {
+  background-color: white;
+  opacity: 0.8;
 }
 
 .descu{
@@ -81,11 +87,11 @@ h2 {
 }
 
 .footerB a {
-  display: block;
+  display: inline-block;
   text-decoration: none;
-  color: white;
-  margin-bottom: 3px;
+  
 }
+
 
 .footerB .footer_redes img {
   display: inline-block;
