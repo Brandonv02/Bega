@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-const sendEmail = async (req, res) => {
+const sendEmail = async (params) => {
   // if (recuperar === null) {
   //   console.log("No existe");
   //   res.end();
@@ -9,14 +9,15 @@ const sendEmail = async (req, res) => {
     service: "Gmail",
     auth: {
       user: "bkvides@misena.edu.co",
-      pass: "xvps uyrx qhdk fejw",
+      pass: "nieu mofc lkdj igwm",
     },
   });
   const mailOptions = {
     from: "Remitente",
     to: "brandonvidesd@gmail.com",
     subject: "Solicitud de cotizacion",
-    text: "Nueva cotizacion: ",
+    text: `Nueva cotizacion: El señor(a) ${params.nombre} de la empresa ${params.compania}, esta solicitando una 
+    cotizacon comunicarse al correo: ${params.correo} `,
   };
 
   try {

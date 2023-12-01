@@ -87,7 +87,8 @@ const guardarCookie = () => {
       correo: correo
     };
     let alerta = "<%= alert %>"
-    if (alerta == ""){
+    let error = "<%= error %>"
+    if (alerta == "" || error == "warning") {
       Usr.push(nuevoUsuario);
       saveLocal();
 
@@ -110,8 +111,6 @@ const cerrarSesion = () => {
   Usr = [];
   saveLocal();
 
-  // También puedes redirigir al usuario a la página de inicio de sesión u otra página después de cerrar sesión
-  // window.location.href = "/pagina-de-inicio";
 };
    </script>
 

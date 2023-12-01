@@ -7,12 +7,8 @@ agregarCarrito = (id, name, pricePro, image) => {
     "nombre": name,
     "precio": parseInt(pricePro),
     "Image": image,
-    "cantidad": 0,
+    "cantidad": 1,
   };
-  // function logica que guarde los objetos
-  // El boton  Carrito debe llamar una funcion que:
-  // 1. leer si hay una cookie..analizar si hay objetos repetidos entre la coockie y el array.
-  // 2. pintar el offcanvas con los objetos encontrados en el carrito
 
   const carritoF = carrito.filter((element) => element.id === id);
   if (carritoF.length > 0) {
@@ -88,7 +84,7 @@ const mostrarCarrito = (priceReal) => {
   const footerModal = document.getElementById("totalPrice");
   footerModal.innerHTML = `Total: $${total}`;
 
-  const mercadopago = new MercadoPago("TEST-bce3d891-e3e0-4460-b90a-090a25077b37", {
+  const mercadopago = new MercadoPago("TEST-8690f390-35e6-4d3d-aa40-cc2e81aedb87", {
     locale: "es-AR", // The most common are: 'pt-BR', 'es-AR' and 'en-US'
   });
 
@@ -172,10 +168,18 @@ const saveLocalSe = () => {
 };
 
 cerrarSesion = () => {
-  // Limpiar la información del usuario en el array y en localStorage
   Usr = [];
+  localStorage.removeItem("log");
   saveLocalSe();
   window.location.href = "/";
 };
 
+consultarCookie = () => {
+  const loguea = JSON.parse(localStorage.getItem("log"));
+  console.log(loguea[0]);
+  console.log(loguea[0] === 0);
+  if (loguea[0] === undefined) {
+    window.location.href = "api/redirect";
+  }
+};
 

@@ -9,7 +9,7 @@ const cors = require("cors");
 const mercadopago = require("mercadopago");
 
 mercadopago.configure({
-  access_token: "TEST-6979309845191746-112822-5ab8c2b00b4ae3291fc70b068beac339-1569115015",
+  access_token: "TEST-1167254088299383-120100-057de93b88b9e4f34700b6f05733ebfc-1570998320",
 });
 // swagger
 const swaggerUI = require("swagger-ui-express");
@@ -81,13 +81,13 @@ app.get("/cotizacion", (req, res) => {
 });
 
 app.post("/solicitudCotiza", async (req, res) => {
-  const response = await sendEmail();
+  const response = await sendEmail(req.body);
   if (response === "OK") {
     res.render("cotizacion", {sesion: "",
       alert: "Correo enviado correctamente", error: "success", title: "Exito"});
   } else {
     res.render("cotizacion", {sesion: "",
-      alert: "Error al enviar correo", error: "Error", title: "Error"});
+      alert: "Error al enviar correo", error: "error", title: "Error"});
   }
 });
 

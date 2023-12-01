@@ -15,6 +15,10 @@ router.get("/inicioSesion", (req, res) => {
   res.render("login", {alert: "", error: "", title: ""});
 });
 
+router.get("/redirect", (req, res) => {
+  res.render("login", {alert: "Inicia sesion para realizar la compra", error: "warning", title: "Advertencia"});
+});
+
 router.get("/registro", (req, res) => {
   res.render("register", {alert: "", error: "", title: ""});
 });
@@ -49,13 +53,13 @@ router.get("/users", auth.verifyAdmin, async (req, res) => {
 });
 
 router.post("/solicitudCotiza", async (req, res) => {
-  const response = await sendEmail();
+  const response = await sendEmail(req.body);
   if (response === "OK") {
     res.render("cotizacion", {sesion: rol,
       alert: "Correo enviado correctamente", error: "success", title: "Exito"});
   } else {
     res.render("cotizacion", {sesion: rol,
-      alert: "Error al enviar correo", error: "Error", title: "Error"});
+      alert: "Error al enviar correo", error: "error", title: "Error"});
   }
 });
 
