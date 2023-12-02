@@ -32,7 +32,7 @@
           <a class="sesion" type="button" href="api/registro">Registrate</a>
           <div class="carritocompras">
             <button class="btn btn-outline-light" id="carritonavbar" type="button" onclick="pintarCarrito()" data-bs-toggle="offcanvas"
-            data-bs-target="#demo" aria-controls="offcanvasRight"><i class="bi bi-cart4"></i>
+            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-cart4"></i>
           </div>
         </form>
       </ul>
@@ -40,10 +40,10 @@
   
   </nav>
   <!-- OffCanvas -->
-  <div class="offcanvas offcanvas-end" id="demo">
+  <div class="offcanvas offcanvas-end" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
         <h3 class="offcanvas-title">Carrito</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
 
     <div class="offcanvas-body" data-target="#vercarro" id="bodycarrito">

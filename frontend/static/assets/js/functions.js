@@ -76,7 +76,7 @@
                 });
 
             
-                let footerTotal = document.getElementById('totalProduct');
+                // let footerTotal = document.getElementById('totalProduct');
                 const total = carritocomp.reduce((acc, pro) => acc + parseFloat(pro.valor) * (pro.cantidad), 0);
                 const totalproducts = document.createElement("div");
                 const footerttl = document.createElement("div");
