@@ -8,6 +8,7 @@ const {newClientController, getClientController, updateClientController, deleteC
 const {getSalesController, insertSalesController, updateSalesController, removeSalesController} = require("../controller/sales/sales.controller");
 const auth = require("../middleware/auth");
 const {desencriptar} = require("../middleware/dataEncrypt");
+const {sendEmail} = require("../middleware/functions");
 const router = express.Router();
 
 // LOGIN
@@ -17,6 +18,21 @@ router.get("/inicioSesion", (req, res) => {
 
 router.get("/redirect", (req, res) => {
   res.render("login", {alert: "Inicia sesion para realizar la compra", error: "warning", title: "Advertencia"});
+});
+
+router.get("/success", (req, res) => {
+  res.render("tranSuccess");
+});
+
+router.get("/fail", (req, res) => {
+  res.render("tranFailed");
+});
+
+router.get("/profile", async (req, res) => {
+  const rol = req.cookies.rol;
+  const email = req.cookies.data;
+  const perfil = await getClientController({correo: email});
+  res.render("profile", {sesion: rol, profile: perfil});
 });
 
 router.get("/registro", (req, res) => {
@@ -53,6 +69,7 @@ router.get("/users", auth.verifyAdmin, async (req, res) => {
 });
 
 router.post("/solicitudCotiza", async (req, res) => {
+  const rol = req.cookies.rol;
   const response = await sendEmail(req.body);
   if (response === "OK") {
     res.render("cotizacion", {sesion: rol,

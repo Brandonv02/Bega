@@ -170,13 +170,13 @@ const saveLocalSe = () => {
 cerrarSesion = () => {
   Usr = [];
   localStorage.removeItem("log");
+  localStorage.removeItem("data");
   saveLocalSe();
   window.location.href = "/";
 };
 
 consultarCookie = () => {
   const loguea = JSON.parse(localStorage.getItem("log"));
-  console.log(loguea[0]);
   console.log(loguea[0] === 0);
   if (loguea[0] === undefined) {
     window.location.href = "api/redirect";

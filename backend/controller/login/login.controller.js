@@ -17,7 +17,9 @@ exports.loginController = async (req, res) => {
     response.contrasena = desencriptar(response.contrasena);
     if ( response.correo === email && response.contrasena === pass ) {
       const rol = response.rol;
+      const correo = response.correo;
       res.cookie("rol", rol, cookieOptions);
+      res.cookie("data", correo, cookieOptions);
       res.render("landing", {produc: productos, sesion: rol, alert: "", error: "", title: ""});
     } else {
       res.render("login", {alert: "Contraseña incorrecta", error: "error", title: "Error"});

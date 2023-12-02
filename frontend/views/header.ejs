@@ -47,7 +47,10 @@
         <% } else { %>
           <div class="header-sign">
             <a href="#" class="sesion">Bienvenido, <%= sesion %></a>
-            <button class="btn btn-primary" type="button" onclick="mostrarCarrito()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <a href="profile" class="btn btn-outline-dark" type="button">
+              <i class="bi bi-person-circle"></i>
+            </a>
+            <button class="btn btn-outline-dark" style="margin-left: 8px;" type="button" onclick="mostrarCarrito()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
               <i class="bi bi-cart-plus-fill"></i>
             </button>
             <button class="btn btn-primary" style="margin-left: 8px;" type="button" onclick="cerrarSesion()">

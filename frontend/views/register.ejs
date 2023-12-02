@@ -12,16 +12,16 @@
     <h2>Registro de Usuario</h2>
     <form method="post" class="form-register" action="newClient">
       <div class="form-group">
-        <label for="username">Identificacion:</label>
-        <input type="number" name="identificacion" placeholder="Ingrese su numero de identificacion" required>
+        <label for="username">* Identificacion:</label>
+        <input type="number" name="identificacion" placeholder="Ingrese su numero de identificacion">
       </div>
       <div class="form-group">
-        <label for="username">Nombre: </label>
-        <input type="text" name="nombre" placeholder="Ingrese su nombre" required>
+        <label for="username">* Nombre: </label>
+        <input type="text" name="nombre" placeholder="Ingrese su nombre" >
       </div>
       <div class="form-group">
-        <label for="username">Correo:</label>
-        <input type="email" name="correo" placeholder="Ingrese su correo" required>
+        <label for="username">* Correo:</label>
+        <input type="email" name="correo" placeholder="Ingrese su correo" >
       </div>
       <div class="form-group">
         <label for="username">Celular:</label>
@@ -29,11 +29,11 @@
       </div>
       <div class="form-group">
         <label for="username">Direccion:</label>
-        <input type="text" name="direccion" placeholder="Ingrese su direccion" required>
+        <input type="text" name="direccion" placeholder="Ingrese su direccion" >
       </div>
       <div class="form-group">
-        <label for="password">Contraseña:</label>
-        <input type="password" name="contrasena" placeholder="Ingrese su contraseña" required>
+        <label for="password">* Contraseña:</label>
+        <input type="password" name="contrasena" placeholder="Ingrese su contraseña"    >
       </div>
       <button class="boton-login" type="submit">Registrarse</button>
       <a type="button" class="botonR" href="inicioSesion">Inicia sesión</a>
@@ -54,6 +54,76 @@
         icon: error
       });
     }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".form-register").addEventListener("submit", function(event) {
+      // Validar campos antes de enviar el formulario
+      if (!validateForm()) {
+        event.preventDefault(); // Evitar el envío del formulario si la validación falla
+      }
+    });
+
+    function validateForm() {
+      // Obtener referencias a los campos del formulario
+      var identificacion = document.querySelector('input[name="identificacion"]').value;
+      var nombre = document.querySelector('input[name="nombre"]').value;
+      var correo = document.querySelector('input[name="correo"]').value;
+      var celular = document.querySelector('input[name="celular"]').value;
+      var direccion = document.querySelector('input[name="direccion"]').value;
+      var contrasena = document.querySelector('input[name="contrasena"]').value;
+
+      // Realizar validaciones
+      if (identificacion.trim() === "") {
+          Swal.fire({
+          title: "Validar",
+          text: "Por favor, ingrese su número de identificación.",
+          icon: "warning"
+        });
+        return false
+      }
+
+      var maxIdentificacion = 99999999999;
+      if (parseInt(identificacion, 10) > maxIdentificacion) {
+        Swal.fire({
+          title: "Validar",
+          text: "El número de identificación tiene que ser minimo 6 y maximo 11",
+          icon: "warning"
+        });
+        return false
+      }
+
+      if (nombre.trim() === "") {
+        Swal.fire({
+          title: "Validar",
+          text: "Por favor, ingrese su nombre.",
+          icon: "warning"
+        });
+        return false
+      }
+
+      if (correo.trim() === "") {
+        Swal.fire({
+          title: "Validar",
+          text: "Por favor, ingrese su correo.",
+          icon: "warning"
+        });
+        return false
+      }
+
+      if (contrasena.trim() === "") {
+        Swal.fire({
+          title: "Validar",
+          text: "Por favor, ingrese su contraseña.",
+          icon: "warning"
+        });
+        return false
+      }
+
+      // Puedes agregar más validaciones según tus requisitos
+
+      return true; // Si todas las validaciones pasan, retorna true
+    }
+  });
 </script>
 </html>
 

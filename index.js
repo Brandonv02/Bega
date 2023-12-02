@@ -48,8 +48,8 @@ app.post("/create_preference", (req, res) => {
       },
     ],
     back_urls: {
-      "success": "http://localhost:3002/success",
-      "failure": "http://localhost:3002/",
+      "success": "http://localhost:3002/api/success",
+      "failure": "http://localhost:3002/api/fail",
       "pending": "",
     },
     auto_return: "approved",
@@ -69,10 +69,6 @@ app.get("/landing", async (req, res) => {
   const productos = await buscarProductos();
   res.render("landing", {produc: productos, sesion: "",
     alert: "", error: "", title: ""});
-});
-
-app.get("/success", (req, res) => {
-  res.render("tranSuccess");
 });
 
 app.get("/cotizacion", (req, res) => {
