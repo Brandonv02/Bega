@@ -30,8 +30,28 @@
           </button>
           <a class="sesion" type="button" href="api/inicioSesion">Inicia sesion</a>
           <a class="sesion" type="button" href="api/registro">Registrate</a>
-          <button class="btn btn-outline-light" id="login" type="button" data-bs-toggle="offcanvas" data-bs-target="#log"><i class="bi bi-cart4"></i>
+          <div class="carritocompras">
+            <button class="btn btn-outline-light" id="carritonavbar" type="button" onclick="pintarCarrito()" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-cart4"></i>
+          </div>
         </form>
       </ul>
     </div>
+  
   </nav>
+  <!-- OffCanvas -->
+  <div class="offcanvas offcanvas-end" id="demo">
+    <div class="offcanvas-header">
+        <h3 class="offcanvas-title">Carrito</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+
+    <div class="offcanvas-body" data-target="#vercarro" id="bodycarrito">
+
+    </div>
+
+    <div class="offcanvas-footer" id="totalProduct">
+        <!-- <p>Total a pagar: </p> -->
+        <button type="button" class="btn btn-dark">Comprar</button>
+    </div>
+  </div>

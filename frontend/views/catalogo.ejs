@@ -34,7 +34,10 @@
               <p class="card-text">Tipo: <%=prod.tipo%></p>
               <p class="card-text">Precio: <%=prod.valor%></p>
               <p class="card-text">Disponibilidad: <%=prod.stock%></p>
-              <a href="#" class="btn btn-primary">Agregar al carrito</a>
+              <button type="button"
+                    style="border-radius:10px; border: 1px solid white; font-size: 25px;"
+                    onclick="carrito(`<%=prod.id%>`,`<%=prod.descripcion%>`,`<%=prod.valor%>`,`<%=prod.stock%>`)"><i class="bi bi-cart4"></i>
+              </button>
             </div>
           </div>
         <% }); %>
@@ -42,8 +45,8 @@
       </div>
     </section>
     
+    <script src="/js/functions.js"></script>
     
-
 
     <!-- FOOTER  -->
 
