@@ -13,6 +13,12 @@ router.get("/landing", async (req, res) => {
   res.render("landing", {produc: productos, sesion: rol, alert: "", error: "", title: ""});
 });
 
+router.get("/products", async (req, res) => {
+  const rol = req.cookies.rol;
+  const productos = await buscarProductos();
+  res.render("products", {produc: productos, sesion: rol, alert: "", error: "", title: ""});
+});
+
 
 // LOGIN
 router.get("/inicioSesion", (req, res) => { res.render("login", {alert: "",error:"",title: ""}); })
