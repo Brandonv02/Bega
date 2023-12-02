@@ -47,7 +47,7 @@ h2 {
 
 .nav-link{
   color: black !important;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500 ;
 }
 
@@ -66,13 +66,22 @@ h2 {
   color: black;
   text-decoration: none;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 17px;
+  
 }
 
 .sesion:hover {
   background-color: #0268b3;
   color: white;
   text-decoration: none;
+}
+
+footer {
+  background-color: #f8f9fa;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .footerB{
@@ -89,9 +98,7 @@ h2 {
 .footerB a {
   display: inline-block;
   text-decoration: none;
-  
 }
-
 
 .footerB .footer_redes img {
   display: inline-block;
