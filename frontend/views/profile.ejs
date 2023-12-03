@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin=""/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""></script>
@@ -75,6 +78,25 @@
         </div>
     </div>
 
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 id="offcanvasRightLabel">Productos seleccionados</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+      <div class="offcanvas-body">
+        <div id="container-carrito" style="padding: 10px;">
+        </div>
+        <div class="offcanvas-footer">
+          <!-- <button type="button" class="btn btn-success">Comprar</button> -->
+          <!-- <a class="btn btn-success" role="button" href="/procesarCompra">Comprar</a> -->
+          <button type="button" onclick="consultarCookie()" class="btn btn-primary" data-toggle="modal" data-target="#modalPago">
+            CheckOut
+          </button>
+          <span id="totalPrice"></span>
+        </div>
+      </div>
+    </div>
+
     <footer>
         <%- include('../views/footer'); %>
     </footer>
@@ -123,5 +145,6 @@
             }
         });
     </script>
+    <script src="/js/funciones.js"></script>
 </body>
 </html>

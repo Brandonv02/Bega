@@ -54,7 +54,7 @@ const mostrarCarrito = (priceReal) => {
     // doc.textContent = id;
     imagen.src = "https://source.unsplash.com/300x400/?nombre";
     nombrePro.textContent = element.nombre;
-    price.textContent = element.precio;
+    price.textContent = `$${element.precio}`;
     disminuir.innerText = "-";
     disminuir.className = "disminuir-producto";
     cantidad.textContent = element.cantidad;
