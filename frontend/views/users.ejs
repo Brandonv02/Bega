@@ -56,11 +56,11 @@
                     <td><%=user.contrasena%></td>
                     <td><%=user.rol%></td>
                     <td>
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modificar"
+                        <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#modificar"
                             onclick="rellenarusu('<%=user.correo%>','<%=user.contrasena%>','<%=user.rol%>')">
                             <i class='fas fa-edit'></i>
                         </button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminar"
+                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#eliminar"
                             onclick="rellenareli('<%=user.correo%>','<%=user.rol%>')">
                             <i class='fas fa-trash-alt'></i>
                         </button>
@@ -131,7 +131,7 @@
                             <form method="post" action="updateUser">
                                 <div class="form-group">
                                     <label for="">Correo: </label>
-                                    <input type="text" name="correo" class="form-control" id="identificacion" placeholder="identificacion" required readonly>
+                                    <input type="text" name="correo" class="form-control" id="identificacion" placeholder="identificacion" required>
                                     
                                 </div>
                                 <div class="form-group">

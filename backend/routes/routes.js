@@ -20,19 +20,44 @@ router.get("/redirect", (req, res) => {
   res.render("login", {alert: "Inicia sesion para realizar la compra", error: "warning", title: "Advertencia"});
 });
 
-router.get("/success", (req, res) => {
+router.get("/success", async (req, res) => {
+  const dataSale = req.cookies.data;
+  const min = 1;
+  const max = 9999;
+  const aleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
+  const data = {
+    identificacion: dataSale.identificacion,
+    nombre: dataSale.nombre,
+    factura: aleatorio,
+    tipoPago: "MercadoPago",
+    productos: "",
+    estado: "Aprobado",
+  };
+  await insertSalesController(data);
   res.render("tranSuccess");
 });
 
-router.get("/fail", (req, res) => {
+router.get("/fail", async (req, res) => {
+  const dataSale = req.cookies.data;
+  const min = 1;
+  const max = 9999;
+  const aleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
+  const data = {
+    identificacion: dataSale.identificacion,
+    nombre: dataSale.nombre,
+    factura: aleatorio,
+    tipoPago: "MercadoPago",
+    productos: "",
+    estado: "Rechazado",
+  };
+  await insertSalesController(data);
   res.render("tranFailed");
 });
 
 router.get("/profile", async (req, res) => {
   const rol = req.cookies.rol;
-  const email = req.cookies.data;
-  const perfil = await getClientController({correo: email});
-  res.render("profile", {sesion: rol, profile: perfil});
+  const dataClient = req.cookies.data;
+  res.render("profile", {sesion: rol, profile: dataClient});
 });
 
 router.get("/registro", (req, res) => {

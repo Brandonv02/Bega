@@ -177,9 +177,19 @@ cerrarSesion = () => {
 
 consultarCookie = () => {
   const loguea = JSON.parse(localStorage.getItem("log"));
-  console.log(loguea[0] === 0);
   if (loguea[0] === undefined) {
     window.location.href = "api/redirect";
+  }
+  console.log(carrito.length);
+  if (carrito.length === 0) {
+    Swal.fire({
+      title: "Opss!",
+      text: "Selecciona productos del catalogo",
+      icon: "error",
+    });
+    setTimeout(() => {
+      window.location.href = "landing";
+    }, 1000);
   }
 };
 

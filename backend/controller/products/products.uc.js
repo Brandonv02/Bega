@@ -6,7 +6,7 @@ exports.find = async (filter) => {
 
 exports.insert = async (param) => {
   const id = param.codigo;
-  const consulta = this.find({codigo: id});
+  this.find({codigo: id});
   return await Productos.create(param);
 };
 

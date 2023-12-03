@@ -25,7 +25,7 @@
 
     <%- include('../views/header'); %>
 
-    <div class="container" style="margin: 160px 308px 0px 300px;">
+    <div class="container" style="margin-top: 100px; margin-bottom: 100px;">
         <div class="profile-details mt-4">
             <div class="profile-header">
                 <h1><%=profile.nombre%></h1>
@@ -35,7 +35,7 @@
             </div>
 
             <div class="details-container">
-                <form id="profileForm">
+                <form id="profileForm" action="updateClient" method="post">
                     <div class="form-group detail">
                         <label for="identificacion">Identificación:</label>
                         <input type="text" id="identificacion" value="<%=profile.identificacion%>" disabled class="form-control">
