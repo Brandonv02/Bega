@@ -1,0 +1,10 @@
+
+Usuario admin: 
+    user: administrador@bega.com	
+    pass: 1admin2
+
+Usuario cliente:
+    user: cleanhouse@gmail.com	
+    pass: clientebega02
+
+En el archivo .env estan los datos de conexion.

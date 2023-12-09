@@ -22,7 +22,6 @@ exports.update = async (_filter, _clientInfo) => {
 };
 
 exports.remove = async (id) => {
-  console.log(id, "remove");
   const res = await Sales.deleteOne(id);
   return {
     found: res.n,

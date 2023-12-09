@@ -80,7 +80,6 @@ const mostrarCarrito = (priceReal) => {
     container.appendChild(cardlist);
   });
   const total = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0);
-  console.log(total, "total");
   const footerModal = document.getElementById("totalPrice");
   footerModal.innerHTML = `Total: $${total}`;
 
@@ -180,7 +179,6 @@ consultarCookie = () => {
   if (loguea[0] === undefined) {
     window.location.href = "api/redirect";
   }
-  console.log(carrito.length);
   if (carrito.length === 0) {
     Swal.fire({
       title: "Opss!",

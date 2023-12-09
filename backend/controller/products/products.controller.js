@@ -18,7 +18,6 @@ exports.nuevoProduct = async (req, res) => {
 };
 
 exports.borrarProducto = async (req, res) => {
-  console.log(req.body);
   const productos = await this.buscarProductos();
   const id = req.body.codigo;
   try {

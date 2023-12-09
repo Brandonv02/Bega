@@ -17,7 +17,6 @@ exports.loginController = async (req, res) => {
   const productos = await buscarProductos();
   if (response !== null) {
     response.contrasena = desencriptar(response.contrasena);
-    console.log(buscarCliente);
     if ( response.correo === email && response.contrasena === pass ) {
       const rol = response.rol;
       res.cookie("rol", rol, cookieOptions);
@@ -62,11 +61,9 @@ exports.updateUserController = async (req, res) => {
 
 exports.removeUserController = async (req, res) => {
   try {
-    console.log(req.body);
     const usu = await this.getUserController();
     const id = req.body.correo;
     const response = await remove({correo: id});
-    console.log(response);
     if (response != null) {
       res.render("users", {users: usu, sesion: "admin", alert: "Eliminado correctamente", error: "success", title: "Exito"});
     }
