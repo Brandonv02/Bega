@@ -1,34 +1,81 @@
-<nav class="navbar navbar-light navbar-expand-lg fixed-top" style="background-color: #0093ff; height: 100px;"> 
-    <img src="images/BEGA.png" class="logo" alt="">
+<nav class="navbar navbar-light navbar-expand-lg fixed-top" style="background-color: #0093ff; padding: 10px;"> 
+    <img src="/images/BEGA.png" class="logo" alt="">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto" style="margin-left: 20px;">
-        <li class="nav-item ">
-          <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="cotizaciones.html">Cotizaciones</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            Productos
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="productos.html">Listar Productos</a>
-            <a class="dropdown-item" href="RegistrarProducto.html">Registrar producto</a>
-          </div>
-        </li>
+        <% if (sesion === "admin") { %>
+          <li class="nav-item ">
+            <a class="nav-link" href="landing">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cotizacion">Cotizaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="usuariosVista">Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="users">Usuarios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products">Productos</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item ">
+            <a class="nav-link" href="landing">Inicio <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cotizacion">Cotizaciones</a>
+          </li>
+        <% } %>
       </ul>
-      <form class="form-inline my-2 my-lg-0" style="width: 525px;">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="form-inline my-2 my-lg-0" style="width: 590px;">
+        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="display: flex;   width: 40px;">
             <i class="bi bi-search"></i>
-        </button>
-        <a class="sesion" type="button" href="api/inicioSesion">Inicia sesion</a>
-        <a class="sesion" type="button" href="api/registro">Registrate</a>
+        </button> -->
+        <% if (sesion === "") { %>
+          <div class="header-sign">
+            <a class="sesion" type="button" href="api/inicioSesion">Inicia sesion</a>
+            <a class="sesion" type="button" href="api/registro">Registrate</a>
+            <button class="btn btn-primary" type="button" onclick="mostrarCarrito()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+              <i class="bi bi-cart-plus-fill"></i>
+            </button>
+          </div>
+        <% } else { %>
+          <div class="header-sign">
+            <a href="#" class="sesion">Bienvenido, <%= sesion %></a>
+            <a href="profile" class="btn btn-outline-dark" type="button">
+              <i class="bi bi-person-circle"></i>
+            </a>
+            <button class="btn btn-outline-dark" style="margin-left: 8px;" type="button" onclick="mostrarCarrito()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+              <i class="bi bi-cart-plus-fill"></i>
+            </button>
+            <button class="btn btn-primary" style="margin-left: 8px;" type="button" onclick="cerrarSesion()">
+              Salir <i class="bi bi-box-arrow-left"></i>
+            </button>
+          </div>
+        <% } %>
       </form>
     </div>
   </nav>
+  <div class="modal fade" id="modalPago">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalPagoLabel">Procede con el pago: </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="shop-content">
+          <button type="button" id="checkout-btn" class="btn btn-success" >Comprar</button>
+          <div id="button-checkout"></div>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>

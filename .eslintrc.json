@@ -11,6 +11,7 @@
     "rules": {
         "semi": ["error", "always"],
         "quotes": ["error", "double"],
-        "max-len":0 
+        "max-len":0,
+        "require-jsdoc" : 0
     }
 }

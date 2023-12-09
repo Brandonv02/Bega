@@ -2,6 +2,7 @@ const connection = require("../config/connectionbd");
 
 const products = new connection.Schema({
   codigo: {
+    require: [true, "El codigo es necesario"],
     unique: [true, "El codigo ya existe"],
     type: String,
     require: true,

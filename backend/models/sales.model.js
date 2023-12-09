@@ -2,13 +2,12 @@ const connection = require("../config/connectionbd");
 
 const ventas = new connection.Schema({
   identificacion: {
-    unique: [true, "El documento ya existe"],
     require: [true, "El documento es necesario"],
     type: String,
   },
   fecha: {
     type: Date,
-    require: true,
+    default: Date.now,
   },
   factura: {
     type: String,

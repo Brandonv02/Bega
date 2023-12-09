@@ -1,26 +1,46 @@
 body{
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Cabin', sans-serif;
 }
 .Productos-categoria{
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-.footerB{
-  height: 120px;
-  background-color: #0093ff;
+body {
+  margin: 0; /* Eliminar márgenes predeterminados del body */
+}
+
+body {
+  margin: 0;
+}
+
+.footerB {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px; /* Reducir la altura ajustando el padding */
+  text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 25px;
-  padding: 30px;
+  bottom: 0;
+  width: 100%;
 }
-.logo{
-  width: 155px;
+
+.logo {
+  width: 100px;
 }
-.footer_redes{
-  font-size: 35px;
+
+.footerB div {
+  margin: 0 10px;
 }
+
+.footer_redes a {
+  color: #fff;
+  margin-right: 15px; /* Aumentar el espaciado entre íconos */
+  font-size: 35px; /* Aumentar el tamaño de los íconos */
+  text-decoration: none;
+}
+
 .subtitulos{
   margin: 60px 0px;
   text-align: center;
@@ -32,8 +52,8 @@ body{
   justify-content: space-around;
 }
 .nav-link{
-  color: black !important;
-  font-size: 20px;
+  color: white !important;
+  font-size: 18px;
   font-weight: 500 ;
 }
 .descu{
@@ -50,13 +70,17 @@ body{
 }
 .coti_tittle{
   text-align: center;
-  margin: 130px 0px 40px 0px;
-  /* box-shadow: 4px 4px 6px 1px #0093ff; */
+  margin: 150px 270px 283px 0px;
+  color: #0093ff;
+  font-weight: bold;
+  font-size: 60px;
 }
 .coti_form {
   border: #0093ff 2px solid;
   padding: 50px;
   border-radius: 15px;
+  margin-bottom: 70px;
+  background: #ffffffad;
 }
 .cuerpo-carrito{
   border: 1px black solid;
@@ -99,9 +123,9 @@ body{
 
 .sesion{
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px 20px 10px 10px;
   background-color: #0093ff;
-  color: black;
+  color: white;
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
@@ -111,4 +135,112 @@ body{
   background-color: #0268b3;
   color: white;
   text-decoration: none;
+}
+
+.titulo-tipo{
+  display: flex;
+  justify-content: flex-start;
+  font-size: 40px;
+  padding: 0px 50px;
+  font-weight: bold;
+}
+
+.listaCarrito{
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #00000038;
+  height: 135px;
+  border-radius: 17px;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 6px 4px 13px 0px gray;
+}
+
+.listaCarrito img {
+  width: 90px;
+  border-radius: 10px;
+}
+
+.listaCarrito p {
+  margin-top: 18px;
+}
+
+.cantidad-carrito {
+  background-color: white;
+  color: black;
+  border-radius: 43%;
+  font-size: 12px;
+  padding: 4px;
+  box-shadow: inset 0 0 4px 0px #0000006b;
+  right: 30px;
+  width: 22px;
+  text-align: center;
+}
+
+.eliminar-producto{
+  cursor: pointer;
+  border-radius: 10px;
+  width: 22px;
+  text-align: center;
+  margin-bottom: auto;
+  font-size: x-large;
+}
+
+.aumentar-producto{
+  cursor: pointer;
+  background-color: #33e133;
+  border-radius: 10px;
+  width: 22px;
+  text-align: center;
+}
+
+.disminuir-producto{
+  cursor: pointer;
+  background-color: #ff4646;
+  border-radius: 10px;
+  width: 22px;
+  text-align: center;
+}
+
+.offcanvas-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 !important;
+}
+
+.offcanvas-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  height: 70px;
+  padding: 20px;
+  color: #f4f4f4;
+}
+
+.head-tb{
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-sign {
+  display: flex;
+  width: 590px;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+}
+
+.form-control{
+  border-radius: 10px;
+}
+
+#shop-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 22px;
 }

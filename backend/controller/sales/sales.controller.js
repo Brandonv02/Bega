@@ -6,12 +6,12 @@ exports.getSalesController = async (req, res) => {
 };
 
 exports.insertSalesController = async (req, res) => {
-  const data = req.body;
+  const data = req;
   try {
-    const response = await insert(data);
-    res.json(response);
+    await insert(data);
+    return true;
   } catch (error) {
-    res.status(error.status);
+    console.log(error);
   }
 };
 

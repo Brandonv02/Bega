@@ -168,17 +168,23 @@
         "tags": [
           "clients"
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "$ref": "#/components/schemas/Clients"
-              }
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto de solicitud",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "identificacion": {
+                  "type": "string"
+                }
+              },
+              "required": ["identificacion"] 
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "delete client"
@@ -192,20 +198,26 @@
         "tags": [
           "clients"
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "$ref": "#/components/schemas/Clients"
-              }
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto de solicitud",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "identificacion": {
+                  "type": "string"
+                }
+              },
+              "required": ["identificacion"] 
             }
           }
-        },
+        ],
         "responses": {
           "200": {
-            "description": "New login"
+            "description": "Busqueda de clientes"
           }
         }
       }

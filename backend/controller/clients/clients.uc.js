@@ -1,4 +1,10 @@
 const Clients = require("../../models/clients.model");
+const user = require("../../models/users.model");
+
+
+exports.insertUser = async (info) => {
+  return await user.create(info);
+};
 
 exports.newClientUc = async (param) => {
   const newClient = new Clients(param);
@@ -6,15 +12,33 @@ exports.newClientUc = async (param) => {
 };
 
 exports.find = async (_filter, _options = {}) => {
-  const {sort} = _options;
+  const {sort, populate} = _options;
+
+  let query = Clients.find();
+
   if (_filter) {
-    const query = await Clients.findOne(_filter);
-    return query;
+    query = Clients.findOne(_filter);
   }
-  if (sort) query.sort(sort);
-  // query.forEach(populate || [], (p) => query.populate(p));
-  // return await query.lean().exec();
-  const clientes = await Clients.find();
-  return clientes;
+
+  if (sort) {
+    query = query.sort(sort);
+  }
+
+  if (populate) {
+    // Asegúrate de que populate sea un array antes de intentar usar forEach
+    if (Array.isArray(populate)) {
+      populate.forEach((p) => query.populate(p));
+    }
+  }
+
+  const result = await query.lean().exec();
+  return result;
 };
 
+exports.update = async (_filter, _productInfo) => {
+  return await Clients.findOneAndUpdate(_filter, _productInfo, {new: true});
+};
+
+exports.remove = async (param) => {
+  return await Clients.findOneAndDelete(param);
+};
