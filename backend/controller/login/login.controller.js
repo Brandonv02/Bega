@@ -17,6 +17,7 @@ exports.loginController = async (req, res) => {
   const productos = await buscarProductos();
   if (response !== null) {
     response.contrasena = desencriptar(response.contrasena);
+    console.log(response);
     if ( response.correo === email && response.contrasena === pass ) {
       const rol = response.rol;
       res.cookie("rol", rol, cookieOptions);
@@ -35,7 +36,8 @@ exports.getUserController = async (param) => {
   return response;
 };
 
-exports.newUserController = async (req, res) => {
+exports.newUserController = async (param) => {
+  console.log(param);
   try {
     await insert(req);
   } catch (error) {

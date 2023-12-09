@@ -27,7 +27,11 @@
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#tabla').DataTable();
+            $('#tabla').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            });
         });
     </script>
     <title>Registrar Productos</title>
@@ -226,57 +230,6 @@
             </div>
         </div>
 
-        <!-- Modal carrito -->
-    <div class="modal fade" id="carrito">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-
-                <!-- Modal body -->
-                <div class="modal-body">
-
-                        <div class="container">
-                            <h2 style="text-align:center;">Carrito de compras</h2>
-                            <form action="/action_page.php">
-                                <span class="itcarrito">
-                                    <img src="/assets/imagenes/cepillos.jpg" alt="" height="80px" >
-                                    <label>Cepillo cerdas duras</label><br>
-                                    <section class="increment" style="text-align:right;"><label>Precio  $7.500</label><br>
-                                    <label for="Cant">Cant.:</label>
-                                    <input type="number" id="Cant" name="tentacles" min="1" max="100"></section>
-                                </span>
-                                
-                                <span class="itcarrito">
-                                    <img src="/assets/imagenes/panos.jpg" alt="" height="80px" >
-                                    <label>Paños limpiadores</label><br>
-                                    <section class="increment" style="text-align:right;"><label>Precio  $2.300</label><br>
-                                    <label for="Cant">Cant.:</label>
-                                    <input type="number" id="Cant" name="tentacles" min="1" max="100"></section>
-                                </span>
-
-                                <span class="itcarrito">
-                                    <img src="/assets/imagenes/escobas.jpeg" alt="" height="80px" >
-                                    <label>Escoba cerdas suaves</label><br>
-                                    <section class="increment" style="text-align:right;"><label>Precio  $9.200</label><br>
-                                    <label for="Cant">Cant.:</label>
-                                    <input type="number" id="Cant" name="tentacles" min="1" max="100"></section>
-                                </span>
-                                <br><br>
-
-                                <div class="fbtn-group">
-                                    <div class="col text-center">
-                                        <button type="submit" class="btn btn-primary">Comprar</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
 <br>
 <br>
       

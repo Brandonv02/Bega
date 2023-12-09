@@ -6,27 +6,41 @@ body{
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-footer {
-  background-color: #f8f9fa;
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+body {
+  margin: 0; /* Eliminar márgenes predeterminados del body */
 }
-.footerB{
-  height: 60px;
-  background-color: #0093ff;
+
+body {
+  margin: 0;
+}
+
+.footerB {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px; /* Reducir la altura ajustando el padding */
+  text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px;
+  bottom: 0;
+  width: 100%;
 }
-.logo{
-  width: 115px;
+
+.logo {
+  width: 100px;
 }
-.footer_redes{
-  font-size: 30px;
+
+.footerB div {
+  margin: 0 10px;
 }
+
+.footer_redes a {
+  color: #fff;
+  margin-right: 15px; /* Aumentar el espaciado entre íconos */
+  font-size: 35px; /* Aumentar el tamaño de los íconos */
+  text-decoration: none;
+}
+
 .subtitulos{
   margin: 60px 0px;
   text-align: center;

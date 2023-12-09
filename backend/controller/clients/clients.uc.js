@@ -1,4 +1,10 @@
 const Clients = require("../../models/clients.model");
+const user = require("../../models/users.model");
+
+
+exports.insertUser = async (info) => {
+  return await user.create(info);
+};
 
 exports.newClientUc = async (param) => {
   const newClient = new Clients(param);

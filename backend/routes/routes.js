@@ -87,7 +87,7 @@ router.get("/users", auth.verifyAdmin, async (req, res) => {
   const usuarios = await getUserController();
   const users = usuarios.map((res) => ({
     correo: res.correo,
-    contrasena: desencriptar(res.contrasena),
+    contrasena: res.contrasena,
     rol: res.rol,
   }));
   res.render("users", {users: users, sesion: rol, alert: "", error: "", title: ""});

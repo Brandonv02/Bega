@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@600;700&display=swap" rel="stylesheet">
     <!-- ESTILOS PROPIOS -->
     <link rel="shortcut icon" href="/images/detergente.png" />
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
     <link rel="stylesheet" href="/styles/main.css">
     <title>Cotizaciones</title>
   </head>
@@ -61,7 +62,6 @@
       </div>
 
     <!-- FOOTER  -->
-
     <footer>
         <%- include('../views/footer'); %>
     </footer>
@@ -84,21 +84,4 @@
             }
     </script>
   </body>
-</html>  <div class="modal fade" id="modalPago">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalPagoLabel">Procede con el pago: </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="shop-content">
-        <button type="button" id="checkout-btn" class="btn btn-success" >Comprar</button>
-        <div id="button-checkout"></div>
-      </div>
-      <!-- <div class="modal-footer">
-      </div> -->
-    </div>
-  </div>
-</div>
+</html> 

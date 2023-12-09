@@ -1,5 +1,4 @@
-const {newUserController} = require("../login/login.controller");
-const {newClientUc, find, update, remove} = require("./clients.uc");
+const {newClientUc, find, update, remove, insertUser} = require("./clients.uc");
 const {encriptar} = require("../../middleware/dataEncrypt");
 
 exports.newClientController = async (req, res) => {
@@ -12,7 +11,7 @@ exports.newClientController = async (req, res) => {
     try {
       await newClientUc(param);
       param.contrasena = encriptar(param.contrasena);
-      await newUserController({correo: param.correo, contrasena: param.contrasena});
+      await insertUser({correo: param.correo, contrasena: param.contrasena});
       res.render("login", {alert: "Se creo el cliente correctamente", error: "success", title: "Exito"});
     } catch (error) {
       console.log(error);
@@ -40,6 +39,8 @@ exports.newClient = async (req, res) => {
   if (buscar === null) {
     try {
       await newClientUc(param);
+      param.contrasena = encriptar(param.contrasena);
+      await insertUser({correo: param.correo, contrasena: param.contrasena});
       res.render("usuarios", {users: usu, sesion: "admin", alert: "Creado correctamente", error: "success", title: "Exito"});
     } catch (error) {
       res.render("usuarios", {users: usu, sesion: "admin", alert: "El codigo ya existe", error: "error", title: "Error"});

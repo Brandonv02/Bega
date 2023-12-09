@@ -9,7 +9,7 @@ const cors = require("cors");
 const mercadopago = require("mercadopago");
 
 mercadopago.configure({
-  access_token: "TEST-1167254088299383-120100-057de93b88b9e4f34700b6f05733ebfc-1570998320",
+  access_token: process.env.TKNMERCADOPAGO,
 });
 // swagger
 const swaggerUI = require("swagger-ui-express");

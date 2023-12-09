@@ -87,35 +87,35 @@
 
                         <div class="container">
                             <h2>Agregar usuario</h2>
-                            <form method="post" action="newClientadmin">
+                            <form method="post" action="newClientadmin" class="form-new">
                                 <div class="form-group">
                                     <label for="">Identificacion: </label>
-                                    <input type="text" name="identificacion" class="form-control" id="identificacion1" placeholder="identificacion" required>
+                                    <input type="number" name="identificacion" class="form-control" id="identificacion1" placeholder="identificacion" >
                                     
                                 </div>
                                 <div class="form-group">
                                     <label for="">Nombre: </label>
-                                    <input type="text" name="nombre" class="form-control" id="nombre1" placeholder="Nombre" required>
+                                    <input type="text" name="nombre" class="form-control" id="nombre1" placeholder="Nombre" >
                                     
                                 </div>
                                 <div class="form-group">
                                     <label for="">Correo:</label>
-                                    <input type="text" name="correo" class="form-control" id="correo1" placeholder="Correo" required>
+                                    <input type="email" name="correo" class="form-control" id="correo1" placeholder="Correo" >
                                     
                                 </div>
                                 <div class="form-group">
                                     <label for="">Celular:</label>
-                                    <input type="text" name="celular" class="form-control" id="celular1" placeholder="Celular" required>
+                                    <input type="number" name="celular" class="form-control" id="celular1" placeholder="Celular" >
                                         
                                 </div>
                                 <div class="form-group">
                                     <label for="">Direccion:</label>
-                                    <input type="text" name="direccion" class="form-control" id="direcci1" placeholder="Direccion" required>
+                                    <input type="text" name="direccion" class="form-control" id="direcci1" placeholder="Direccion" >
                                         
                                 </div>
                                 <div class="form-group">
                                     <label for="">Contrasena:</label>
-                                    <input type="text" name="contrasena" class="form-control" id="contrasena1" placeholder="password" required>
+                                    <input type="text" name="contrasena" class="form-control" id="contrasena1" placeholder="password"   >
                                         
                                 </div>
                                 <div class="fbtn-group">
@@ -134,7 +134,7 @@
             </div>
         </div>
         
-        <!-- Modal modificar -->
+        <!-- Modal modificar -->form-new
         <div class="modal fade" id="modificar">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -225,58 +225,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Modal carrito -->
-    <div class="modal fade" id="carrito">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-
-                <!-- Modal body -->
-                <div class="modal-body">
-
-                        <div class="container">
-                            <h2 style="text-align:center;">Carrito de compras</h2>
-                            <form action="/action_page.php">
-                                <span class="itcarrito">
-                                    <img src="/assets/imagenes/cepillos.jpg" alt="" height="80px" >
-                                    <label>Cepillo cerdas duras</label><br>
-                                    <section class="increment" style="text-align:right;"><label>Precio  $7.500</label><br>
-                                    <label for="Cant">Cant.:</label>
-                                    <input type="number" id="Cant" name="tentacles" min="1" max="100"></section>
-                                </span>
-                                
-                                <span class="itcarrito">
-                                    <img src="/assets/imagenes/panos.jpg" alt="" height="80px" >
-                                    <label>Paños limpiadores</label><br>
-                                    <section class="increment" style="text-align:right;"><label>Precio  $2.300</label><br>
-                                    <label for="Cant">Cant.:</label>
-                                    <input type="number" id="Cant" name="tentacles" min="1" max="100"></section>
-                                </span>
-
-                                <span class="itcarrito">
-                                    <img src="/assets/imagenes/escobas.jpeg" alt="" height="80px" >
-                                    <label>Escoba cerdas suaves</label><br>
-                                    <section class="increment" style="text-align:right;"><label>Precio  $9.200</label><br>
-                                    <label for="Cant">Cant.:</label>
-                                    <input type="number" id="Cant" name="tentacles" min="1" max="100"></section>
-                                </span>
-                                <br><br>
-
-                                <div class="fbtn-group">
-                                    <div class="col text-center">
-                                        <button type="submit" class="btn btn-primary">Comprar</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
 <br>
 <br>
       
@@ -330,6 +278,76 @@
             campo_id.value = id
             campo_nombre.value = nombre 
         }
+
+    document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".form-new").addEventListener("submit", function(event) {
+      // Validar campos antes de enviar el formulario
+      if (!validateForm()) {
+        event.preventDefault(); // Evitar el envío del formulario si la validación falla
+      }
+    });
+
+    function validateForm() {
+      // Obtener referencias a los campos del formulario
+      var identificacion = document.querySelector('input[name="identificacion"]').value;
+      var nombre = document.querySelector('input[name="nombre"]').value;
+      var correo = document.querySelector('input[name="correo"]').value;
+      var celular = document.querySelector('input[name="celular"]').value;
+      var direccion = document.querySelector('input[name="direccion"]').value;
+      var contrasena = document.querySelector('input[name="contrasena"]').value;
+
+      // Realizar validaciones
+      if (identificacion.trim() === "") {
+          Swal.fire({
+          title: "Validar",
+          text: "Por favor, ingrese su número de identificación.",
+          icon: "warning"
+        });
+        return false
+      }
+      
+      var maxIdentificacion = 99999999999;
+      if (parseInt(identificacion, 10) > maxIdentificacion || parseInt(identificacion, 10) < 0) {
+        Swal.fire({
+          title: "Validar",
+          text: "El número de identificación tiene que ser minimo 6 y maximo 11",
+          icon: "warning"
+        });
+        return false
+      }
+
+      if (nombre.trim() === "") {
+        Swal.fire({
+          title: "Validar",
+          text: "Por favor, ingrese su nombre.",
+          icon: "warning"
+        });
+        return false
+      }
+
+      if (correo.trim() === "") {
+        Swal.fire({
+          title: "Validar",
+          text: "Por favor, ingrese su correo.",
+          icon: "warning"
+        });
+        return false
+      }
+
+      if (contrasena.trim() === "") {
+        Swal.fire({
+          title: "Validar",
+          text: "Por favor, ingrese su contraseña.",
+          icon: "warning"
+        });
+        return false
+      }
+
+      // Puedes agregar más validaciones según tus requisitos
+
+      return true; // Si todas las validaciones pasan, retorna true
+    }
+})
     </script>
 </body>
 </html>

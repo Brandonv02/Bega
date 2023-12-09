@@ -177,7 +177,7 @@ cerrarSesion = () => {
 consultarCookie = () => {
   const loguea = JSON.parse(localStorage.getItem("log"));
   if (loguea[0] === undefined) {
-    window.location.href = "api/redirect";
+    window.location.href = "redirect";
   }
   if (carrito.length === 0) {
     Swal.fire({
