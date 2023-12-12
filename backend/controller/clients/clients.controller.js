@@ -1,5 +1,10 @@
-const {newClientUc, find, update, remove, insertUser} = require("./clients.uc");
+const {newClientUc, find, update, remove, insertUser, updateU} = require("./clients.uc");
 const {encriptar} = require("../../middleware/dataEncrypt");
+const cookieOptions = {
+  maxAge: 1000 * 60 * 60 * 24, // Duración de la cookie en milisegundos (aquí, 1 día)
+  httpOnly: true,
+  // Otras opciones de configuración de cookie si es necesario
+};
 
 exports.newClientController = async (req, res) => {
   const param = req.body;
@@ -57,16 +62,40 @@ exports.getClientController = async (param) => {
 };
 
 exports.updateClientController = async (req, res) => {
-  const usu = await this.getClientController();
+  const datauser = {
+    correo: req.body.correo,
+    contrasena: encriptar(req.body.contrasena),
+  };
   const id = req.body.identificacion;
   const data = req.body;
   try {
+    await updateU({correo: datauser.correo}, datauser);
     const response = await update({identificacion: id}, data);
     if (response != null) {
       res.render("usuarios", {users: usu, sesion: "admin", alert: "Actualizado correctamente", error: "success", title: "Exito"});
     }
   } catch (error) {
     res.status(error.status);
+  }
+};
+
+exports.updateProfile = async (req, res) => {
+  const dataClient = req.cookies.data;
+  const datauser = {
+    correo: req.body.correo,
+    contrasena: encriptar(req.body.contrasena),
+  };
+  const data = req.body;
+  try {
+    const response = await update({_id: dataClient._id}, data);
+    await updateU({correo: response.correo}, datauser);
+    if (response != null) {
+      const rol = req.cookies.rol;
+      res.cookie("data", response, cookieOptions);
+      res.render("profile", {sesion: rol, profile: dataClient, sesion: rol, alert: "Actualizado correctamente", error: "success", title: "Exito"});
+    }
+  } catch (error) {
+    res.render("profile", {sesion: rol, profile: dataClient, sesion: rol, alert: "Ocurrio un error", error: "error", title: "Error"});
   }
 };
 

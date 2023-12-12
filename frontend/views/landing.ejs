@@ -64,9 +64,12 @@
       <% produc.forEach(function(prod) { %>
         <% if (prod.tipo === "fibra") { %>
           <div class="card shadow-lg" style="width: 18rem; border-radius: 45px; ">
-            <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" 
+            <img src="/images/cepillo_bano.jpg" class="card-img-top" 
             style="height: 300px; border-radius: 45px 45px 0px 0px;" alt="...">
-            <div class="card-body">60pxock%></p>
+            <div class="card-body">
+              <h5 class="card-title"><%=prod.descripcion%></h5>
+              <p class="card-text">Precio: <%=prod.valor%></p>
+              <p class="card-text">Disponibilidad: <%=prod.stock%></p>
               <p class="card-text">Tipo: <%=prod.tipo%></p>
               <a onclick="agregarCarrito('<%=prod._id%>','<%=prod.descripcion%>','<%=prod.valor%>','<%=prod.stock%>')"
                 class="btn btn-primary"><i class="bi bi-cart-plus-fill"></i> Agregar</a>
@@ -81,7 +84,7 @@
       <% produc.forEach(function(prod) { %>
         <% if (prod.tipo === "madera") { %>
           <div class="card shadow-lg" style="width: 18rem; border-radius: 45px;">
-            <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" 
+            <img src="/images/escoba_fibra.jpg" class="card-img-top" 
             style="height: 300px; height: 300px; border-radius: 45px 45px 0px 0px;" alt="">
             <div class="card-body">
               <h5 class="card-title"><%=prod.descripcion%></h5>
@@ -101,7 +104,7 @@
       <% produc.forEach(function(prod) { %>
         <% if (prod.tipo === "tela") { %>
           <div class="card shadow-lg" style="width: 18rem; border-radius: 45px;">
-            <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" 
+            <img src="/images/trapera_retaso.jpg" class="card-img-top" 
             style="height: 300px; height: 300px; border-radius: 45px 45px 0px 0px;" alt="">
             <div class="card-body">
               <h5 class="card-title"><%=prod.descripcion%></h5>
@@ -121,7 +124,7 @@
       <% produc.forEach(function(prod) { %>
         <% if (prod.tipo === "retaso") { %>
           <div class="card shadow-lg" style="width: 18rem; border-radius: 45px;">
-            <img src="https://source.unsplash.com/300x400/?<%=prod.descripcion%>" class="card-img-top" 
+            <img src="/images/trapera_azul.jpg" class="card-img-top" 
             style="height: 300px; height: 300px; border-radius: 45px 45px 0px 0px;" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%=prod.descripcion%></h5>

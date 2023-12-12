@@ -23,7 +23,11 @@
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#tabla').DataTable();
+            $('#tabla').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            });
         });
     </script>
     <title>Usuarios</title>
@@ -33,7 +37,7 @@
 
     <%- include('../views/header'); %>
 
-    <div class="container" style="margin-top: 85px; margin-bottom: 70px;">
+    <div class="container" style="margin-top: 90px; margin-bottom: 30px;">
         <div class="head-tb">
             <h2>CLIENTES</h2>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar">Agregar usuario <i class='fas fa-edit'></i></button>
@@ -134,7 +138,7 @@
             </div>
         </div>
         
-        <!-- Modal modificar -->form-new
+        <!-- Modal modificar -->
         <div class="modal fade" id="modificar">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -307,7 +311,7 @@
       }
       
       var maxIdentificacion = 99999999999;
-      if (parseInt(identificacion, 10) > maxIdentificacion || parseInt(identificacion, 10) < 0) {
+      if (parseInt(identificacion, 10) > maxIdentificacion || parseInt(identificacion, 10) < 99999) {
         Swal.fire({
           title: "Validar",
           text: "El número de identificación tiene que ser minimo 6 y maximo 11",
@@ -342,8 +346,6 @@
         });
         return false
       }
-
-      // Puedes agregar más validaciones según tus requisitos
 
       return true; // Si todas las validaciones pasan, retorna true
     }

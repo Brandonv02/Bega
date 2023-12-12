@@ -52,7 +52,7 @@ const mostrarCarrito = (priceReal) => {
     eliminar.innerText = "x";
     eliminar.className = "eliminar-producto";
     // doc.textContent = id;
-    imagen.src = "https://source.unsplash.com/300x400/?nombre";
+    imagen.src = "/images/cepillo_bano.jpg";
     nombrePro.textContent = element.nombre;
     price.textContent = `$${element.precio}`;
     disminuir.innerText = "-";

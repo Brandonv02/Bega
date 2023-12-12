@@ -1,10 +1,14 @@
 
 Usuario admin: 
-    user: administrador@bega.com	
-    pass: 1admin2
+  correo: 'admin@gmail.com',
+  contrasena: '123',
 
 Usuario cliente:
-    user: cleanhouse@gmail.com	
-    pass: clientebega02
+  correo: 'cliente@gmail.com',
+  contrasena: '01010'
 
+Usuario operador:
+  correo: 'cleanhouse@gmail.com',
+  contrasena: 'cliente02',
+  
 En el archivo .env estan los datos de conexion.
