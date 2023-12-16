@@ -4,11 +4,12 @@ const express = require("express");
 const path = require("path");
 const {nuevoProduct, buscarProductos, actualizarProducto, borrarProducto} = require("../controller/products/products.controller");
 const {loginController, newUserController, updateUserController, removeUserController, getUserController} = require("../controller/login/login.controller");
-const {newClientController, getClientController, updateClientController, deleteClient, newClient} = require("../controller/clients/clients.controller");
+const {newClientController, getClientController, updateClientController, deleteClient, newClient, updateProfile} = require("../controller/clients/clients.controller");
 const {getSalesController, insertSalesController, updateSalesController, removeSalesController} = require("../controller/sales/sales.controller");
 const auth = require("../middleware/auth");
 const {desencriptar} = require("../middleware/dataEncrypt");
 const {sendEmail} = require("../middleware/functions");
+const {findSales} = require("../controller/sales/sales.uc");
 const router = express.Router();
 
 // LOGIN
@@ -21,6 +22,10 @@ router.get("/redirect", (req, res) => {
 });
 
 router.get("/success", async (req, res) => {
+  const fecha = new Date();
+  const offset = fecha.getTimezoneOffset() * 60000;
+  const fechaLocal = new Date(fecha.getTime() - offset);
+  const fechaISOLocal = fechaLocal.toISOString().split(".")[0].replace("T", " ");
   const dataSale = req.cookies.data;
   const min = 1;
   const max = 9999;
@@ -28,6 +33,7 @@ router.get("/success", async (req, res) => {
   const data = {
     identificacion: dataSale.identificacion,
     nombre: dataSale.nombre,
+    fecha: fechaISOLocal,
     factura: aleatorio,
     tipoPago: "MercadoPago",
     productos: "",
@@ -38,6 +44,10 @@ router.get("/success", async (req, res) => {
 });
 
 router.get("/fail", async (req, res) => {
+  const fecha = new Date();
+  const offset = fecha.getTimezoneOffset() * 60000;
+  const fechaLocal = new Date(fecha.getTime() - offset);
+  const fechaISOLocal = fechaLocal.toISOString().split(".")[0].replace("T", " ");
   const dataSale = req.cookies.data;
   const min = 1;
   const max = 9999;
@@ -45,6 +55,7 @@ router.get("/fail", async (req, res) => {
   const data = {
     identificacion: dataSale.identificacion,
     nombre: dataSale.nombre,
+    fecha: fechaISOLocal,
     factura: aleatorio,
     tipoPago: "MercadoPago",
     productos: "",
@@ -57,7 +68,7 @@ router.get("/fail", async (req, res) => {
 router.get("/profile", async (req, res) => {
   const rol = req.cookies.rol;
   const dataClient = req.cookies.data;
-  res.render("profile", {sesion: rol, profile: dataClient});
+  res.render("profile", {sesion: rol, profile: dataClient, alert: "", error: "", title: ""});
 });
 
 router.get("/registro", (req, res) => {
@@ -76,10 +87,23 @@ router.get("/usuariosVista", auth.verifyAdmin, async (req, res) => {
   res.render("usuarios", {users: usu, sesion: rol, alert: "", error: "", title: ""});
 });
 
-router.get("/cotizacion", auth.verifyAdmin, (req, res) => {
+router.get("/cotizacion", (req, res) => {
   const rol = req.cookies.rol;
   res.render("cotizacion", {sesion: rol,
     alert: "", error: "", title: ""});
+});
+
+router.get("/sales", async (req, res) => {
+  const rol = req.cookies.rol;
+  const data = req.cookies.data.identificacion;
+  const ventas = await findSales();
+  let sales;
+  if (rol !== "admin") {
+    sales = ventas.filter((dat) => dat.identificacion === data);
+  } else {
+    sales = ventas;
+  }
+  res.render("sales", {dataSale: sales, sesion: rol});
 });
 
 router.get("/users", auth.verifyAdmin, async (req, res) => {
@@ -97,8 +121,7 @@ router.post("/solicitudCotiza", async (req, res) => {
   const rol = req.cookies.rol;
   const response = await sendEmail(req.body);
   if (response === "OK") {
-    res.render("cotizacion", {sesion: rol,
-      alert: "Correo enviado correctamente", error: "success", title: "Exito"});
+    res.render("cotizacion", {sesion: rol, alert: "Correo enviado correctamente, nos contactaremos en breve contigo!!", error: "success", title: "Exito"});
   } else {
     res.render("cotizacion", {sesion: rol,
       alert: "Error al enviar correo", error: "error", title: "Error"});
@@ -120,6 +143,7 @@ router.post("/removeUser", removeUserController);
 router.post("/newClient", newClientController);
 router.post("/getClient", getClientController);
 router.post("/updateClient", updateClientController);
+router.post("/updatePro", updateProfile);
 router.post("/deleteClient", deleteClient);
 router.post("/newClientadmin", newClient);
 

@@ -2,7 +2,7 @@ const {find, insert, update, remove} = require("./sales.uc");
 
 exports.getSalesController = async (req, res) => {
   const response = await find();
-  res.json(response);
+  return response;
 };
 
 exports.insertSalesController = async (req, res) => {

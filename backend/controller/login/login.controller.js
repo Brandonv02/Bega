@@ -48,6 +48,7 @@ exports.newUserController = async (param) => {
 
 exports.updateUserController = async (req, res) => {
   const data = req.body;
+  console.log(data);
   const id = data.correo;
   data.contrasena = encriptar(data.contrasena);
   const usu = await this.getUserController();

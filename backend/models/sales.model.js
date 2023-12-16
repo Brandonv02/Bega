@@ -6,8 +6,8 @@ const ventas = new connection.Schema({
     type: String,
   },
   fecha: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    require: true,
   },
   factura: {
     type: String,

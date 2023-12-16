@@ -22,6 +22,32 @@
           <li class="nav-item">
             <a class="nav-link" href="products">Productos</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sales">Compras</a>
+          </li>
+          <% } else if(sesion === "operador") { %>
+            <li class="nav-item ">
+              <a class="nav-link" href="landing">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cotizacion">Cotizaciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sales">Compras</a>
+            </li>
+            <% } else if (sesion === "cliente"){ %>
+              <li class="nav-item ">
+                <a class="nav-link" href="landing">Inicio <span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cotizacion">Cotizaciones</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="sales">Compras</a>
+              </li>
         <% } else { %>
           <li class="nav-item ">
             <a class="nav-link" href="landing">Inicio <span class="sr-only"></span></a>

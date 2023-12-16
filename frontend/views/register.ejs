@@ -86,7 +86,7 @@
       }
       
       var maxIdentificacion = 99999999999;
-      if (parseInt(identificacion, 10) > maxIdentificacion || parseInt(identificacion, 10) < 0) {
+      if (parseInt(identificacion, 10) > maxIdentificacion || parseInt(identificacion, 10) < 99999) {
         Swal.fire({
           title: "Validar",
           text: "El número de identificación tiene que ser minimo 6 y maximo 11",
@@ -94,7 +94,7 @@
         });
         return false
       }
-
+      
       if (nombre.trim() === "") {
         Swal.fire({
           title: "Validar",

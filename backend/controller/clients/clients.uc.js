@@ -1,6 +1,9 @@
 const Clients = require("../../models/clients.model");
 const user = require("../../models/users.model");
 
+exports.updateU = async (_filter, _clientInfo) => {
+  return await user.findOneAndUpdate(_filter, _clientInfo, {new: true});
+};
 
 exports.insertUser = async (info) => {
   return await user.create(info);

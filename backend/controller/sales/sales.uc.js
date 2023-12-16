@@ -1,6 +1,6 @@
 const Sales = require("../../models/sales.model");
 
-exports.find = async (_filter, _options = {}) => {
+exports.findSales = async (_filter, _options = {}) => {
   const {sort} = _options;
   if (_filter) {
     const query = await Sales.findOne(_filter);
