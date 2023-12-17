@@ -1,7 +1,6 @@
 const express = require("express");
 
 // const fs = require("fs");
-const path = require("path");
 const {nuevoProduct, buscarProductos, actualizarProducto, borrarProducto} = require("../controller/products/products.controller");
 const {loginController, newUserController, updateUserController, removeUserController, getUserController} = require("../controller/login/login.controller");
 const {newClientController, getClientController, updateClientController, deleteClient, newClient, updateProfile} = require("../controller/clients/clients.controller");
@@ -10,6 +9,7 @@ const auth = require("../middleware/auth");
 const {desencriptar} = require("../middleware/dataEncrypt");
 const {sendEmail} = require("../middleware/functions");
 const {findSales} = require("../controller/sales/sales.uc");
+const {log} = require("../middleware/logs");
 const router = express.Router();
 
 // LOGIN
