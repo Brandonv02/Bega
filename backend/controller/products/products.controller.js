@@ -22,7 +22,6 @@ exports.borrarProducto = async (req, res) => {
   const id = req.body.codigo;
   try {
     const response = await remove({codigo: id});
-    console.log(response);
     if (response != null) {
       res.render("products", {produc: productos, sesion: "admin", alert: "Eliminado correctamente", error: "success", title: "Exito"});
     }
@@ -37,7 +36,6 @@ exports.actualizarProducto = async (req, res) => {
   const data = req.body;
   try {
     const response = await update({codigo: id}, data);
-    console.log(response);
     if (response != null) {
       res.render("products", {produc: productos, sesion: "admin", alert: "Actualizado correctamente", error: "success", title: "Exito"});
     }
