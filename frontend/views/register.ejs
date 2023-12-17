@@ -95,6 +95,15 @@
         return false
       }
       
+      if (parseInt(celular, 10) > 99999999999 || parseInt(celular, 10) < 999999) {
+        Swal.fire({
+          title: "Validar",
+          text: "Por favor, ingrese su numero de celular valido.",
+          icon: "warning"
+        });
+        return false
+      }
+
       if (nombre.trim() === "") {
         Swal.fire({
           title: "Validar",

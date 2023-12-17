@@ -97,7 +97,7 @@ const mostrarCarrito = (priceReal) => {
       price: total,
     };
 
-    fetch("http://localhost:3002/create_preference", {
+    fetch("https://bega-aseo.onrender.com/create_preference", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

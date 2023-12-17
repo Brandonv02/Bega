@@ -40,6 +40,7 @@ router.get("/success", async (req, res) => {
     estado: "Aprobado",
   };
   await insertSalesController(data);
+  log(`se ha registrado una nueva venta, fecha: ${new Date()} \n`);
   res.render("tranSuccess");
 });
 
@@ -62,6 +63,7 @@ router.get("/fail", async (req, res) => {
     estado: "Rechazado",
   };
   await insertSalesController(data);
+  log(`se ha registrado una nueva venta, fecha: ${new Date()} \n`);
   res.render("tranFailed");
 });
 
@@ -78,6 +80,7 @@ router.get("/registro", (req, res) => {
 router.get("/landing", async (req, res) => {
   const rol = req.cookies.rol;
   const productos = await buscarProductos();
+  console.log(productos);
   res.render("landing", {produc: productos, sesion: rol, alert: "", error: "", title: ""});
 });
 
@@ -158,15 +161,5 @@ router.post("/newproduct", nuevoProduct);
 router.post("/getProducts", buscarProductos);
 router.post("/updateProducts", actualizarProducto);
 router.post("/deleteProducts", borrarProducto);
-
-
-router.get("/prueba", (req, res) => {
-  const fs = require("fs");
-  const text = "prueba de file system hoy si sirve";
-  const rutaPersonalizada = path.join(__dirname, "../files/logs", "fileLogs.txt");
-  fs.writeFile(rutaPersonalizada, text, (err) => {
-    if (err) throw err;
-  });
-});
 
 module.exports = router;

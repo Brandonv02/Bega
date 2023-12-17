@@ -30,28 +30,28 @@
 
       <div class="container" style="margin: 200px 0px 0px 0px;max-width: 100%;display: flex;justify-content: space-around; margin-bottom: 124px;">
         <h3 class="coti_tittle">COTIZA CON NOSOTROS</h3>
-        <form class="coti_form shadow" action="solicitudCotiza" method="post">
+        <form class="coti_form shadow" action="solicitudCotiza" method="post" onsubmit="return validarFormulario()">
           <div class="form-row ">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Nombre completo</label>
-              <input type="text" name="nombre" class="form-control" id="inputEmail4" required>
+              <input type="text" name="nombre" class="form-control" id="inputEmail4">
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">Telefono</label>
-              <input type="number" name="telefono" class="form-control" id="inputPassword4" required>
+              <input type="number" name="telefono" class="form-control" id="inputPassword4" >
             </div>
           </div>
           <div class="form-group">
             <label for="inputAddress">Correo</label>
-            <input type="email" class="form-control" name="correo" id="inputAddress" required>
+            <input type="email" class="form-control" name="correo" id="inputAddress" >
           </div>
           <div class="form-group">
             <label for="inputAddress2">Nombre empresa</label>
-            <input type="text" class="form-control" name="compania" id="inputAddress2" required>
+            <input type="text" class="form-control" name="compania" id="inputAddress2" >
           </div>
           <div class="form-group">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck" required>
+              <input class="form-check-input" type="checkbox" id="gridCheck" >
               <label class="form-check-label" for="gridCheck">
                 Aceptar terminos y condiciones 
               </label>
@@ -82,6 +82,34 @@
                   icon: error,
               });
             }
+        function validarFormulario() {
+        var nombre = document.getElementById('inputEmail4').value;
+        var telefono = document.getElementById('inputPassword4').value;
+        var correo = document.getElementById('inputAddress').value;
+        var compania = document.getElementById('inputAddress2').value;
+        var checkbox = document.getElementById('gridCheck').checked;
+
+        if (nombre === '' || telefono === '' || correo === '' || compania === '' || !checkbox) {
+          Swal.fire({
+            title: "Validar",
+            text: "Por favor, completa todos los campos.",
+            icon: "warning"
+          });
+          return false
+        }
+
+        if (parseInt(telefono, 10) > 99999999999 || parseInt(telefono, 10) < 999999) {
+        Swal.fire({
+          title: "Validar",
+          text: "Por favor, ingrese su numero de celular valido.",
+          icon: "warning"
+        });
+        return false
+      }
+        // Puedes agregar más validaciones según tus requisitos.
+
+        return true;
+    }
     </script>
   </body>
 </html> 

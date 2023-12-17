@@ -1,7 +1,8 @@
 const {buscarProductos} = require("../products/products.controller");
 const {find, insert, update, remove} = require("./login.uc");
-const {desencriptar, encriptar} = require("../../middleware/dataEncrypt");
+const {desencriptar} = require("../../middleware/dataEncrypt");
 const {getClientController} = require("../clients/clients.controller");
+const {log} = require("../../middleware/logs");
 
 const cookieOptions = {
   maxAge: 1000 * 60 * 60 * 24, // Duración de la cookie en milisegundos (aquí, 1 día)
@@ -21,6 +22,7 @@ exports.loginController = async (req, res) => {
       const rol = response.rol;
       res.cookie("rol", rol, cookieOptions);
       res.cookie("data", buscarCliente, cookieOptions);
+      log(`${response.correo} ingreso a la app, fecha: ${new Date()} \n`);
       res.render("landing", {produc: productos, sesion: rol, alert: "", error: "", title: ""});
     } else {
       res.render("login", {alert: "Contraseña incorrecta", error: "error", title: "Error"});
@@ -45,14 +47,13 @@ exports.newUserController = async (param) => {
 };
 
 exports.updateUserController = async (req, res) => {
-  const data = req.body;
-  console.log(data);
-  const id = data.correo;
-  data.contrasena = encriptar(data.contrasena);
+  const data = {rol: req.body.rol};
+  const id = req.body.correo;
   const usu = await this.getUserController();
   try {
     const response = await update({correo: id}, data);
     if (response != null) {
+      log(`realizaron una actualizacion de datos, fecha: ${new Date()} \n`);
       res.render("users", {users: usu, sesion: "admin", alert: "Actualizado correctamente", error: "success", title: "Exito"});
     }
   } catch (error) {
@@ -66,6 +67,7 @@ exports.removeUserController = async (req, res) => {
     const id = req.body.correo;
     const response = await remove({correo: id});
     if (response != null) {
+      log(`se ha eliminado un usuario, fecha: ${new Date()} \n`);
       res.render("users", {users: usu, sesion: "admin", alert: "Eliminado correctamente", error: "success", title: "Exito"});
     }
   } catch (error) {

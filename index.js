@@ -48,8 +48,8 @@ app.post("/create_preference", (req, res) => {
       },
     ],
     back_urls: {
-      "success": "http://localhost:3002/api/success",
-      "failure": "http://localhost:3002/api/fail",
+      "success": "https://bega-aseo.onrender.com/api/success",
+      "failure": "https://bega-aseo.onrender.com/api/fail",
       "pending": "",
     },
     auto_return: "approved",

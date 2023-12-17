@@ -1,5 +1,6 @@
 const {newClientUc, find, update, remove, insertUser, updateU} = require("./clients.uc");
 const {encriptar} = require("../../middleware/dataEncrypt");
+const {log} = require("../../middleware/logs");
 const cookieOptions = {
   maxAge: 1000 * 60 * 60 * 24, // Duración de la cookie en milisegundos (aquí, 1 día)
   httpOnly: true,
@@ -17,6 +18,7 @@ exports.newClientController = async (req, res) => {
       await newClientUc(param);
       param.contrasena = encriptar(param.contrasena);
       await insertUser({correo: param.correo, contrasena: param.contrasena});
+      log(`se ha creado un cliente, fecha: ${new Date()} \n`);
       res.render("login", {alert: "Se creo el cliente correctamente", error: "success", title: "Exito"});
     } catch (error) {
       console.log(error);
@@ -46,6 +48,7 @@ exports.newClient = async (req, res) => {
       await newClientUc(param);
       param.contrasena = encriptar(param.contrasena);
       await insertUser({correo: param.correo, contrasena: param.contrasena});
+      log(`se ha creado un cliente, fecha: ${new Date()} \n`);
       res.render("usuarios", {users: usu, sesion: "admin", alert: "Creado correctamente", error: "success", title: "Exito"});
     } catch (error) {
       res.render("usuarios", {users: usu, sesion: "admin", alert: "El codigo ya existe", error: "error", title: "Error"});
@@ -72,6 +75,7 @@ exports.updateClientController = async (req, res) => {
     await updateU({correo: datauser.correo}, datauser);
     const response = await update({identificacion: id}, data);
     if (response != null) {
+      log(`se ha realizado una actualizacion de datos, fecha: ${new Date()} \n`);
       res.render("usuarios", {users: usu, sesion: "admin", alert: "Actualizado correctamente", error: "success", title: "Exito"});
     }
   } catch (error) {
@@ -92,6 +96,7 @@ exports.updateProfile = async (req, res) => {
     if (response != null) {
       const rol = req.cookies.rol;
       res.cookie("data", response, cookieOptions);
+      log(`se ha realizado una actualizacion de datos perfil, fecha: ${new Date()} \n`);
       res.render("profile", {sesion: rol, profile: dataClient, sesion: rol, alert: "Actualizado correctamente", error: "success", title: "Exito"});
     }
   } catch (error) {
@@ -105,6 +110,7 @@ exports.deleteClient = async (req, res) => {
   try {
     const response = await remove({identificacion: id});
     if (response != null) {
+      log(`se ha eliminado un cliente, fecha: ${new Date()} \n`);
       res.render("usuarios", {users: usu, sesion: "admin", alert: "Eliminado correctamente", error: "success", title: "Exito"});
     }
   } catch (error) {

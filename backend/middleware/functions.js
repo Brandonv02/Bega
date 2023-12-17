@@ -18,7 +18,7 @@ const sendEmail = async (params) => {
     subject: "Solicitud de cotizacion",
     html: `<p style="color: green; font-size: 40px; font-weight: bold;">Nueva cotización:</p>
     <p>El señor(a) ${params.nombre} de la empresa ${params.compania} está solicitando una cotización.</p>
-    <p>Comuníquese al correo: ${params.correo}</p>
+    <p>Comuníquese al correo: ${params.correo} o al numero ${params.telefono}</p>
     <img src="cid:logo" style="width: 200px;" alt="Logo">`,
     attachments: [
       {
@@ -32,7 +32,7 @@ const sendEmail = async (params) => {
     from: "Remitente",
     to: params.correo,
     subject: "Solicitud de cotizacion",
-    html: `<p style="color: green; font-size: 40px; font-weight: bold;">Nueva cotización:</p>
+    html: `<p style="color: green; font-size: 40px; font-weight: bold;">Cotización enviada:</p>
     <p>Señor(a) ${params.nombre} de la empresa ${params.compania} su solicitud fue enviada correctamente.</p>
     <img src="cid:logo" style="width: 200px;" alt="Logo">`,
     attachments: [
