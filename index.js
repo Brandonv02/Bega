@@ -80,7 +80,7 @@ app.post("/solicitudCotiza", async (req, res) => {
   const response = await sendEmail(req.body);
   if (response === "OK") {
     res.render("cotizacion", {sesion: "",
-      alert: "Correo enviado correctamente", error: "success", title: "Exito"});
+      alert: "Correo enviado correctamente, nos contactaremos en breve contigo!!", error: "success", title: "Exito"});
   } else {
     res.render("cotizacion", {sesion: "",
       alert: "Error al enviar correo", error: "error", title: "Error"});
