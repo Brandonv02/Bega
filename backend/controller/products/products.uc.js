@@ -15,7 +15,6 @@ exports.update = async (_filter, _productInfo) => {
 };
 
 exports.remove = async (param) => {
-  console.log(param);
   return await Productos.findOneAndDelete(param);
 };
 

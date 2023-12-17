@@ -80,7 +80,6 @@ router.get("/registro", (req, res) => {
 router.get("/landing", async (req, res) => {
   const rol = req.cookies.rol;
   const productos = await buscarProductos();
-  console.log(productos);
   res.render("landing", {produc: productos, sesion: rol, alert: "", error: "", title: ""});
 });
 
